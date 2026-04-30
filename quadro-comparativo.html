@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quadro Comparativo · LHL-Tech Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',system-ui,sans-serif;background:#0D1B2A;color:#F4EFE6;-webkit-font-smoothing:antialiased;padding:clamp(12px,2.5vw,28px);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;font-size:16px;}
+
+.card{width:100%;max-width:980px;background:#0D1B2A;border:.5px solid rgba(201,168,76,0.3);border-radius:8px;overflow:hidden;}
+
+/* HEADER */
+.hdr{background:#060d16;padding:clamp(14px,2.2vw,22px) clamp(16px,2.8vw,30px);border-bottom:1px solid rgba(201,168,76,0.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.hdr-eye{font-size:clamp(9px,1.1vw,10px);letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,0.65);margin-bottom:4px;}
+.hdr-title{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,26px);font-weight:700;color:#F4EFE6;line-height:1.1;}
+.hdr-sub{font-size:clamp(10px,1.2vw,11.5px);color:rgba(244,239,230,0.4);margin-top:3px;}
+.badge{font-size:clamp(8.5px,1vw,9.5px);letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:5px 13px;border-radius:3px;background:rgba(201,168,76,0.1);border:.5px solid rgba(201,168,76,0.3);color:#C9A84C;white-space:nowrap;}
+
+/* GRID BASE — 3 colunas */
+.g3{display:grid;grid-template-columns:1.3fr 1fr 1fr;}
+
+/* COL HEADERS */
+.col-hdrs{border-bottom:.5px solid rgba(201,168,76,0.2);}
+.ch{padding:clamp(12px,1.8vw,18px) clamp(12px,1.8vw,20px);}
+.ch-lbl{background:#0a1520;border-right:.5px solid rgba(255,255,255,0.06);display:flex;align-items:center;}
+.ch-lbl span{font-size:clamp(9px,1.1vw,10px);letter-spacing:.14em;text-transform:uppercase;color:rgba(244,239,230,0.3);}
+.ch-ref{background:rgba(106,174,232,0.08);border-right:.5px solid rgba(255,255,255,0.06);}
+.ch-viv{background:rgba(77,191,133,0.08);}
+.ch-eye{font-size:clamp(8.5px,1vw,10px);letter-spacing:.12em;text-transform:uppercase;font-weight:500;margin-bottom:4px;}
+.ch-eye-b{color:rgba(106,174,232,0.85);}
+.ch-eye-g{color:rgba(77,191,133,0.85);}
+.ch-name{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.8vw,25px);font-weight:700;line-height:1;margin-bottom:3px;}
+.ch-name-b{color:#6aaee8;}
+.ch-name-g{color:#4DBF85;}
+.ch-meta{font-size:clamp(10px,1.2vw,11.5px);color:rgba(244,239,230,0.38);line-height:1.45;}
+
+/* DESPESA TOTAL */
+.desp{background:#0f1e30;border-bottom:.5px solid rgba(201,168,76,0.25);}
+.dc{padding:clamp(10px,1.5vw,15px) clamp(12px,1.8vw,20px);border-right:.5px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;justify-content:center;}
+.dc:last-child{border-right:none;}
+.desp-lbl{font-size:clamp(9px,1.1vw,10.5px);letter-spacing:.14em;text-transform:uppercase;color:#C9A84C;font-weight:600;display:flex;align-items:center;gap:6px;}
+.desp-lbl::before{content:'';width:7px;height:7px;border-radius:50%;background:#C9A84C;flex-shrink:0;}
+.desp-num{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3.2vw,30px);font-weight:700;line-height:1;}
+.desp-num-b{color:#6aaee8;}
+.desp-num-g{color:#4DBF85;}
+
+/* SEC HEAD */
+.sec{background:#0a1520;border-bottom:.5px solid rgba(201,168,76,0.15);}
+.sec .dc{grid-column:1/-1;border-right:none;font-size:clamp(9px,1.1vw,10px);letter-spacing:.16em;text-transform:uppercase;color:#C9A84C;font-weight:600;flex-direction:row;align-items:center;gap:6px;padding:clamp(8px,1.1vw,10px) clamp(12px,1.8vw,20px);}
+.sec .dc::before{content:'';width:6px;height:6px;border-radius:50%;background:#C9A84C;flex-shrink:0;}
+
+/* DATA ROWS */
+.row{border-bottom:.5px solid rgba(255,255,255,0.05);transition:background .15s;}
+.row:last-child{border-bottom:none;}
+.row:hover{background:rgba(255,255,255,0.02);}
+.row.alt{background:rgba(255,255,255,0.025);}
+.row.alt:hover{background:rgba(255,255,255,0.04);}
+.row.result{background:rgba(77,191,133,0.05);border-top:.5px solid rgba(77,191,133,0.2);}
+
+/* ITEM NAME */
+.iname{font-size:clamp(12px,1.5vw,14px);color:rgba(244,239,230,0.63);line-height:1.4;}
+.iname.bold{color:rgba(244,239,230,0.9);font-weight:600;}
+
+/* VALUES */
+.val{font-size:clamp(14px,1.9vw,17px);font-weight:600;color:#F4EFE6;line-height:1.2;}
+.val.b{color:#6aaee8;}
+.val.g{color:#4DBF85;}
+.val.gold{color:#C9A84C;}
+.val.dim{color:rgba(244,239,230,0.3);font-style:italic;font-weight:400;font-size:clamp(12px,1.4vw,14px);}
+.pct{font-size:clamp(10px,1.2vw,12px);color:rgba(244,239,230,0.38);font-weight:400;margin-top:1px;}
+.val-big{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,23px);font-weight:700;line-height:1.1;}
+.val-big.b{color:#6aaee8;}
+.val-big.g{color:#4DBF85;}
+.margem{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.8vw,26px);font-weight:700;line-height:1;}
+.margem.b{color:#6aaee8;}
+.margem.g{color:#4DBF85;}
+.moic{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.8vw,36px);font-weight:700;line-height:1;}
+.moic.b{color:#6aaee8;}
+.moic.g{color:#C9A84C;}
+
+/* 4 MODELS GRID */
+.m4{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:.5px solid rgba(201,168,76,0.15);}
+.mc{padding:clamp(12px,1.6vw,18px) clamp(10px,1.4vw,14px);border-right:.5px solid rgba(255,255,255,0.06);}
+.mc:last-child{border-right:none;}
+.mc.best{background:rgba(77,191,133,0.07);border:.5px solid rgba(77,191,133,0.25);border-top:none;border-bottom:none;}
+.mc.bad{background:rgba(224,112,112,0.06);border:.5px solid rgba(224,112,112,0.2);border-top:none;border-bottom:none;border-left:none;}
+.mc-eye{font-size:clamp(8px,1vw,9px);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:4px;}
+.mc-eye-g{color:rgba(77,191,133,0.85);}
+.mc-eye-w{color:rgba(244,239,230,0.38);}
+.mc-eye-r{color:rgba(224,112,112,0.8);}
+.mc-name{font-size:clamp(11px,1.4vw,13px);font-weight:600;color:#F4EFE6;margin-bottom:9px;line-height:1.3;}
+.mr{display:flex;justify-content:space-between;font-size:clamp(10px,1.2vw,12px);padding:3px 0;border-bottom:.5px solid rgba(255,255,255,0.05);gap:4px;flex-wrap:wrap;}
+.mr:last-child{border-bottom:none;}
+.mr-l{color:rgba(244,239,230,0.42);}
+.mr-v{color:#F4EFE6;font-weight:500;text-align:right;}
+.mr-v.g{color:#4DBF85;}
+.mr-v.r{color:#e07070;}
+
+/* V5 */
+.v5{background:rgba(232,149,90,0.07);border-top:.5px solid rgba(232,149,90,0.25);padding:clamp(12px,1.8vw,17px) clamp(14px,2vw,20px);display:flex;gap:10px;align-items:flex-start;}
+.v5-ico{width:20px;height:20px;border-radius:50%;background:rgba(232,149,90,0.15);border:.5px solid rgba(232,149,90,0.3);display:flex;align-items:center;justify-content:center;font-size:10px;color:#E8955A;flex-shrink:0;margin-top:2px;}
+.v5-ttl{font-size:clamp(9px,1.1vw,10px);letter-spacing:.12em;text-transform:uppercase;color:#E8955A;font-weight:600;margin-bottom:4px;}
+.v5-body{font-size:clamp(12px,1.5vw,13.5px);color:rgba(232,149,90,0.75);line-height:1.65;}
+.v5-body strong{color:#E8955A;}
+
+/* FOOTER */
+.ftr{background:#060d16;border-top:.5px solid rgba(201,168,76,0.2);padding:clamp(12px,1.6vw,16px) clamp(16px,2.5vw,28px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.fb{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.8vw,18px);font-weight:600;color:#F4EFE6;}
+.fb em{font-style:normal;color:#C9A84C;}
+.fc{font-size:clamp(8px,.9vw,9.5px);color:rgba(244,239,230,0.3);margin-top:2px;letter-spacing:.05em;}
+.fm{font-size:clamp(8.5px,1vw,10px);color:rgba(244,239,230,0.28);text-align:right;line-height:1.6;}
+
+/* MOBILE */
+@media(max-width:580px){
+  .g3,.col-hdrs,.desp,.sec,.row,.result{grid-template-columns:1fr;}
+  .ch-ref{border-right:none;border-bottom:.5px solid rgba(255,255,255,0.07);}
+  .ch-viv{border-right:none;}
+  .dc{border-right:none;border-bottom:.5px solid rgba(255,255,255,0.05);padding:10px 14px;}
+  .dc:last-child{border-bottom:none;}
+  .m4{grid-template-columns:1fr 1fr;}
+  .mc{border-right:.5px solid rgba(255,255,255,0.06);border-bottom:.5px solid rgba(255,255,255,0.06);}
+  .mc:nth-child(2n){border-right:none;}
+}
+@media print{
+  body{background:#0D1B2A;padding:6mm;}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+}
+</style>
+</head>
+<body>
+<div class="card">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div>
+    <div class="hdr-eye">LHL-Tech Intelligence · Uso Interno · Confidencial · Abril 2026</div>
+    <div class="hdr-title">Quadro Comparativo</div>
+    <div class="hdr-sub">Giro de Estoque + Financiamento de Obra &nbsp;·&nbsp; Metodologia circular 16% TDC &nbsp;·&nbsp; 4 modelos de estruturação</div>
+  </div>
+  <div class="badge">Benchmark Verificado</div>
+</div>
+
+<!-- COL HEADERS -->
+<div class="g3 col-hdrs">
+  <div class="ch ch-lbl"><span>Item</span></div>
+  <div class="ch ch-ref">
+    <div class="ch-eye ch-eye-b">Referência de Mercado · Recife / PE</div>
+    <div class="ch-name ch-name-b">Referência</div>
+    <div class="ch-meta">Torre única · Alto padrão · Permuta ~20%<br>Incorporador-construtor · Giro cruzado ativo</div>
+  </div>
+  <div class="ch ch-viv">
+    <div class="ch-eye ch-eye-g">Vivacaé Caruaru · Modelo M1 · LHL-Tech</div>
+    <div class="ch-name ch-name-g">Vivacaé M1</div>
+    <div class="ch-meta">3 blocos · 236 un. · MCMV F4 + Livre · Permuta 10%<br>Incorporador-construtor · Nova Caruaru / PE</div>
+  </div>
+</div>
+
+<!-- DESPESA TOTAL -->
+<div class="g3 desp">
+  <div class="dc"><div class="desp-lbl">Despesa Total (TDC)</div></div>
+  <div class="dc"><div class="desp-num desp-num-b">R$ 55.361.721</div></div>
+  <div class="dc"><div class="desp-num desp-num-g">R$ 126.140.000</div></div>
+</div>
+
+<!-- SEÇÃO DESPESAS -->
+<div class="g3 sec"><div class="dc">Despesas</div></div>
+
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Despesas com obra (custo raso + tx.adm)</div></div>
+  <div class="dc"><div class="val b">R$ 34.313.615</div><div class="pct">– 62,3%</div></div>
+  <div class="dc"><div class="val g">R$ 82.550.000</div><div class="pct">– 65,4%</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- Fin. Obra: Juros + Estruturação</div></div>
+  <div class="dc"><div class="val b">R$ 8.873.146</div><div class="pct">– 16,0%</div></div>
+  <div class="dc"><div class="val g">R$ 20.180.000</div><div class="pct">– 16,0%</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Despesas Comerciais (desp.comerciais + txs.gestão)</div></div>
+  <div class="dc"><div class="val">R$ 5.964.860</div><div class="pct">– 10,8%</div></div>
+  <div class="dc"><div class="val">R$ 10.730.000</div><div class="pct">– 8,5%</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- Imposto</div></div>
+  <div class="dc"><div class="val">R$ 2.592.025</div><div class="pct">– 4,7%</div></div>
+  <div class="dc"><div class="val">R$ 6.440.000</div><div class="pct">– 5,1%</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Despesas de Incorporação</div></div>
+  <div class="dc"><div class="val">R$ 515.884</div><div class="pct">– 0,9%</div></div>
+  <div class="dc"><div class="val">R$ 3.150.000</div><div class="pct">– 2,5%</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- Despesas com Terreno</div></div>
+  <div class="dc"><div class="val">R$ 201.820</div><div class="pct">– 0,4%</div></div>
+  <div class="dc"><div class="val">R$ 200.000</div><div class="pct">– 0,2%</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Giro Estoque: Juros + Estruturação</div></div>
+  <div class="dc"><div class="val">– R$ 547.850</div><div class="pct">– 0,98%</div></div>
+  <div class="dc"><div class="val">R$ 1.150.000</div><div class="pct">– 0,75%</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- Contingência Técnica</div></div>
+  <div class="dc"><div class="val dim">—</div></div>
+  <div class="dc"><div class="val">R$ 1.240.000</div><div class="pct">– 1,0%</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Comissão Intermediação Terreno</div></div>
+  <div class="dc"><div class="val dim">—</div></div>
+  <div class="dc"><div class="val">R$ 500.000</div><div class="pct">– 0,4%</div></div>
+</div>
+
+<!-- SEÇÃO RESULTADO -->
+<div class="g3 sec"><div class="dc">Resultado</div></div>
+
+<div class="g3 row">
+  <div class="dc"><div class="iname">- VGV Líquido (90%)</div></div>
+  <div class="dc"><div class="val-big b">~R$ 65.000.000</div></div>
+  <div class="dc"><div class="val-big g">R$ 153.250.000</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- Lucro Líquido</div></div>
+  <div class="dc"><div class="val-big b">R$ 12.230.337</div></div>
+  <div class="dc"><div class="val-big g">R$ 27.110.000</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Txs Incorporador (tx. adm)</div></div>
+  <div class="dc"><div class="val b">R$ 3.404.292</div></div>
+  <div class="dc"><div class="val g">R$ 7.430.000</div></div>
+</div>
+<div class="g3 row result">
+  <div class="dc"><div class="iname bold">- Lucro Líquido + Txs Incorporador</div></div>
+  <div class="dc">
+    <div class="val-big b">R$ 15.634.629</div>
+    <div class="pct">R$12.230.337 + R$3.404.292</div>
+  </div>
+  <div class="dc">
+    <div class="val-big g">R$ 34.540.000</div>
+    <div class="pct">R$27.110.000 + R$7.430.000</div>
+  </div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Margem Líquida</div></div>
+  <div class="dc"><div class="margem b">18,75% / 23,9%</div></div>
+  <div class="dc"><div class="margem g">17,7% / 22,5%</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- Máxima e atual exposição caixa incorporador</div></div>
+  <div class="dc"><div class="val b">R$ −444.209</div><div class="pct">/ R$ 14.642 (março)</div></div>
+  <div class="dc"><div class="val g">~R$ −600.000</div><div class="pct">/ ~R$ 0 (pós-lançamento MCMV)</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- MOIC Real (com giro cruzado)</div></div>
+  <div class="dc"><div class="moic b">35×+</div></div>
+  <div class="dc"><div class="moic g">~52× ↑</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- TIR Real (com giro cruzado)</div></div>
+  <div class="dc"><div class="val b">&gt;150% a.a.</div></div>
+  <div class="dc"><div class="val gold">&gt;200% a.a. ↑</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- TIR Equity (sem giro cruzado)</div></div>
+  <div class="dc"><div class="val dim">N/D</div></div>
+  <div class="dc"><div class="val g">28–32% a.a.</div></div>
+</div>
+
+<!-- 4 MODELOS -->
+<div class="g3 sec"><div class="dc">4 Modelos de Estruturação · Base TDC Idêntica · Vivacaé Caruaru</div></div>
+<div class="m4">
+  <div class="mc best">
+    <div class="mc-eye mc-eye-g">M1 · Melhor · Recomendado</div>
+    <div class="mc-name">Incorporador-Construtor<br>Mesmo player</div>
+    <div class="mr"><span class="mr-l">TDC</span><span class="mr-v">R$ 126,14 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro líq.</span><span class="mr-v">R$ 27,11 MM</span></div>
+    <div class="mr"><span class="mr-l">+ Txs Incorp.</span><span class="mr-v">R$ 7,43 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro total</span><span class="mr-v g">R$ 34,54 MM</span></div>
+    <div class="mr"><span class="mr-l">Margem total</span><span class="mr-v g">22,5% ✓</span></div>
+  </div>
+  <div class="mc">
+    <div class="mc-eye mc-eye-w">M2 · Parceria</div>
+    <div class="mc-name">Players distintos<br>5% garantido s/ obra</div>
+    <div class="mr"><span class="mr-l">TDC</span><span class="mr-v">R$ 126,14 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro incorp.</span><span class="mr-v">R$ 27,11 MM</span></div>
+    <div class="mr"><span class="mr-l">Txs construtora</span><span class="mr-v">R$ 4,13 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro total</span><span class="mr-v">R$ 31,24 MM</span></div>
+    <div class="mr"><span class="mr-l">Margem total</span><span class="mr-v">20,4%</span></div>
+  </div>
+  <div class="mc">
+    <div class="mc-eye mc-eye-w">M3 · Parceria + Meta</div>
+    <div class="mc-name">5% fixo + 2% meta<br>Prazo 36m + custo ≤ R$82,55MM</div>
+    <div class="mr"><span class="mr-l">TDC</span><span class="mr-v">R$ 126,14 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro incorp.</span><span class="mr-v">R$ 26,57 MM</span></div>
+    <div class="mr"><span class="mr-l">Txs construtora</span><span class="mr-v">R$ 4,64 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro total</span><span class="mr-v">R$ 31,21 MM</span></div>
+    <div class="mr"><span class="mr-l">Margem total</span><span class="mr-v">20,4%</span></div>
+  </div>
+  <div class="mc bad">
+    <div class="mc-eye mc-eye-r">M4 · Pior · Não recomendado</div>
+    <div class="mc-name">Incorporador puro<br>Construtora terceira 9%</div>
+    <div class="mr"><span class="mr-l">TDC (c/ tx.adm)</span><span class="mr-v">R$ 133,57 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro total</span><span class="mr-v r">R$ 19,68 MM</span></div>
+    <div class="mr"><span class="mr-l">Margem total</span><span class="mr-v r">12,8%</span></div>
+  </div>
+</div>
+
+<!-- V5 -->
+<div class="v5">
+  <div class="v5-ico">⚑</div>
+  <div>
+    <div class="v5-ttl">Opção V5 — Condicional · Sujeito a Confirmação</div>
+    <div class="v5-body">Segregação do Bloco A (MCMV F4 · 96 un.) em SPE própria com <strong>RET — alíquota 1%</strong> sobre receita MCMV. Economia: <strong>R$ 1,76 MM</strong> · TDC cai para ~R$ 124,38 MM · Lucro M1 sobe para <strong>~R$ 36,30 MM</strong> · Margem total: <strong>~23,7%</strong>. Condicionante: habilitação CEF + SPE segregada aprovada pela Receita Federal.</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="ftr">
+  <div>
+    <div class="fb">LHL-Tech <em>Intelligence</em></div>
+    <div class="fc">Ari Carvalho · CRECI-FL SL3467205 · "Smart Money. Structured Deals. Faith-Driven Mission."</div>
+  </div>
+  <div class="fm">Nova Caruaru · Pernambuco · Brasil<br>Circular verificado: R$20,18MM ÷ R$126,14MM = <strong style="color:#C9A84C;">16,0%</strong> ✓</div>
+</div>
+
+</div>
+</body>
+</html>
