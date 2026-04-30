@@ -3,1001 +3,328 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vivacaé Caruaru — Posição de Entrada</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Quadro Comparativo · LHL-Tech Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Outfit',system-ui,sans-serif;background:#0D1B2A;color:#F4EFE6;-webkit-font-smoothing:antialiased;padding:clamp(12px,2.5vw,28px);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;font-size:16px;}
 
-/* ═══════════════════════ VARIABLES ═══════════════════════ */
-:root {
-  --n1:#060e18; --n2:#0D1B2A; --n3:#0f2035; --n4:#162840; --n5:#1e3452;
-  --gold:#C9A84C; --gold2:#e8c96e; --gold3:#a8861e;
-  --goldf:rgba(201,168,76,0.12); --goldl:rgba(201,168,76,0.22);
-  --cr1:#F4EFE6; --cr2:rgba(244,239,230,0.85);
-  --cr3:rgba(244,239,230,0.65); --cr4:rgba(244,239,230,0.40); --cr5:rgba(244,239,230,0.18);
-  --green:#4DBF85; --greenf:rgba(77,191,133,0.10); --greenl:rgba(77,191,133,0.28);
-  --blue:#6aaee8;  --bluef:rgba(106,174,232,0.10);  --bluel:rgba(106,174,232,0.28);
-  --red:#e07070;   --redf:rgba(224,112,112,0.10);    --redl:rgba(224,112,112,0.28);
-  --w3:rgba(255,255,255,0.03); --w6:rgba(255,255,255,0.06); --w10:rgba(255,255,255,0.10);
-  --ff-d:'Cormorant Garamond',Georgia,serif;
-  --ff-b:'Outfit',system-ui,sans-serif;
-  --r:5px;
-  --pad:clamp(48px,7vw,100px) clamp(16px,5vw,52px);
+.card{width:100%;max-width:980px;background:#0D1B2A;border:.5px solid rgba(201,168,76,0.3);border-radius:8px;overflow:hidden;}
+
+/* HEADER */
+.hdr{background:#060d16;padding:clamp(14px,2.2vw,22px) clamp(16px,2.8vw,30px);border-bottom:1px solid rgba(201,168,76,0.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.hdr-eye{font-size:clamp(9px,1.1vw,10px);letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,0.65);margin-bottom:4px;}
+.hdr-title{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,26px);font-weight:700;color:#F4EFE6;line-height:1.1;}
+.hdr-sub{font-size:clamp(10px,1.2vw,11.5px);color:rgba(244,239,230,0.4);margin-top:3px;}
+.badge{font-size:clamp(8.5px,1vw,9.5px);letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:5px 13px;border-radius:3px;background:rgba(201,168,76,0.1);border:.5px solid rgba(201,168,76,0.3);color:#C9A84C;white-space:nowrap;}
+
+/* GRID BASE — 3 colunas */
+.g3{display:grid;grid-template-columns:1.3fr 1fr 1fr;}
+
+/* COL HEADERS */
+.col-hdrs{border-bottom:.5px solid rgba(201,168,76,0.2);}
+.ch{padding:clamp(12px,1.8vw,18px) clamp(12px,1.8vw,20px);}
+.ch-lbl{background:#0a1520;border-right:.5px solid rgba(255,255,255,0.06);display:flex;align-items:center;}
+.ch-lbl span{font-size:clamp(9px,1.1vw,10px);letter-spacing:.14em;text-transform:uppercase;color:rgba(244,239,230,0.3);}
+.ch-ref{background:rgba(106,174,232,0.08);border-right:.5px solid rgba(255,255,255,0.06);}
+.ch-viv{background:rgba(77,191,133,0.08);}
+.ch-eye{font-size:clamp(8.5px,1vw,10px);letter-spacing:.12em;text-transform:uppercase;font-weight:500;margin-bottom:4px;}
+.ch-eye-b{color:rgba(106,174,232,0.85);}
+.ch-eye-g{color:rgba(77,191,133,0.85);}
+.ch-name{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.8vw,25px);font-weight:700;line-height:1;margin-bottom:3px;}
+.ch-name-b{color:#6aaee8;}
+.ch-name-g{color:#4DBF85;}
+.ch-meta{font-size:clamp(10px,1.2vw,11.5px);color:rgba(244,239,230,0.38);line-height:1.45;}
+
+/* DESPESA TOTAL */
+.desp{background:#0f1e30;border-bottom:.5px solid rgba(201,168,76,0.25);}
+.dc{padding:clamp(10px,1.5vw,15px) clamp(12px,1.8vw,20px);border-right:.5px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;justify-content:center;}
+.dc:last-child{border-right:none;}
+.desp-lbl{font-size:clamp(9px,1.1vw,10.5px);letter-spacing:.14em;text-transform:uppercase;color:#C9A84C;font-weight:600;display:flex;align-items:center;gap:6px;}
+.desp-lbl::before{content:'';width:7px;height:7px;border-radius:50%;background:#C9A84C;flex-shrink:0;}
+.desp-num{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3.2vw,30px);font-weight:700;line-height:1;}
+.desp-num-b{color:#6aaee8;}
+.desp-num-g{color:#4DBF85;}
+
+/* SEC HEAD */
+.sec{background:#0a1520;border-bottom:.5px solid rgba(201,168,76,0.15);}
+.sec .dc{grid-column:1/-1;border-right:none;font-size:clamp(9px,1.1vw,10px);letter-spacing:.16em;text-transform:uppercase;color:#C9A84C;font-weight:600;flex-direction:row;align-items:center;gap:6px;padding:clamp(8px,1.1vw,10px) clamp(12px,1.8vw,20px);}
+.sec .dc::before{content:'';width:6px;height:6px;border-radius:50%;background:#C9A84C;flex-shrink:0;}
+
+/* DATA ROWS */
+.row{border-bottom:.5px solid rgba(255,255,255,0.05);transition:background .15s;}
+.row:last-child{border-bottom:none;}
+.row:hover{background:rgba(255,255,255,0.02);}
+.row.alt{background:rgba(255,255,255,0.025);}
+.row.alt:hover{background:rgba(255,255,255,0.04);}
+.row.result{background:rgba(77,191,133,0.05);border-top:.5px solid rgba(77,191,133,0.2);}
+
+/* ITEM NAME */
+.iname{font-size:clamp(12px,1.5vw,14px);color:rgba(244,239,230,0.63);line-height:1.4;}
+.iname.bold{color:rgba(244,239,230,0.9);font-weight:600;}
+
+/* VALUES */
+.val{font-size:clamp(14px,1.9vw,17px);font-weight:600;color:#F4EFE6;line-height:1.2;}
+.val.b{color:#6aaee8;}
+.val.g{color:#4DBF85;}
+.val.gold{color:#C9A84C;}
+.val.dim{color:rgba(244,239,230,0.3);font-style:italic;font-weight:400;font-size:clamp(12px,1.4vw,14px);}
+.pct{font-size:clamp(10px,1.2vw,12px);color:rgba(244,239,230,0.38);font-weight:400;margin-top:1px;}
+.val-big{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,23px);font-weight:700;line-height:1.1;}
+.val-big.b{color:#6aaee8;}
+.val-big.g{color:#4DBF85;}
+.margem{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.8vw,26px);font-weight:700;line-height:1;}
+.margem.b{color:#6aaee8;}
+.margem.g{color:#4DBF85;}
+.moic{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.8vw,36px);font-weight:700;line-height:1;}
+.moic.b{color:#6aaee8;}
+.moic.g{color:#C9A84C;}
+
+/* 4 MODELS GRID */
+.m4{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:.5px solid rgba(201,168,76,0.15);}
+.mc{padding:clamp(12px,1.6vw,18px) clamp(10px,1.4vw,14px);border-right:.5px solid rgba(255,255,255,0.06);}
+.mc:last-child{border-right:none;}
+.mc.best{background:rgba(77,191,133,0.07);border:.5px solid rgba(77,191,133,0.25);border-top:none;border-bottom:none;}
+.mc.bad{background:rgba(224,112,112,0.06);border:.5px solid rgba(224,112,112,0.2);border-top:none;border-bottom:none;border-left:none;}
+.mc-eye{font-size:clamp(8px,1vw,9px);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:4px;}
+.mc-eye-g{color:rgba(77,191,133,0.85);}
+.mc-eye-w{color:rgba(244,239,230,0.38);}
+.mc-eye-r{color:rgba(224,112,112,0.8);}
+.mc-name{font-size:clamp(11px,1.4vw,13px);font-weight:600;color:#F4EFE6;margin-bottom:9px;line-height:1.3;}
+.mr{display:flex;justify-content:space-between;font-size:clamp(10px,1.2vw,12px);padding:3px 0;border-bottom:.5px solid rgba(255,255,255,0.05);gap:4px;flex-wrap:wrap;}
+.mr:last-child{border-bottom:none;}
+.mr-l{color:rgba(244,239,230,0.42);}
+.mr-v{color:#F4EFE6;font-weight:500;text-align:right;}
+.mr-v.g{color:#4DBF85;}
+.mr-v.r{color:#e07070;}
+
+/* V5 */
+.v5{background:rgba(232,149,90,0.07);border-top:.5px solid rgba(232,149,90,0.25);padding:clamp(12px,1.8vw,17px) clamp(14px,2vw,20px);display:flex;gap:10px;align-items:flex-start;}
+.v5-ico{width:20px;height:20px;border-radius:50%;background:rgba(232,149,90,0.15);border:.5px solid rgba(232,149,90,0.3);display:flex;align-items:center;justify-content:center;font-size:10px;color:#E8955A;flex-shrink:0;margin-top:2px;}
+.v5-ttl{font-size:clamp(9px,1.1vw,10px);letter-spacing:.12em;text-transform:uppercase;color:#E8955A;font-weight:600;margin-bottom:4px;}
+.v5-body{font-size:clamp(12px,1.5vw,13.5px);color:rgba(232,149,90,0.75);line-height:1.65;}
+.v5-body strong{color:#E8955A;}
+
+/* FOOTER */
+.ftr{background:#060d16;border-top:.5px solid rgba(201,168,76,0.2);padding:clamp(12px,1.6vw,16px) clamp(16px,2.5vw,28px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.fb{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.8vw,18px);font-weight:600;color:#F4EFE6;}
+.fb em{font-style:normal;color:#C9A84C;}
+.fc{font-size:clamp(8px,.9vw,9.5px);color:rgba(244,239,230,0.3);margin-top:2px;letter-spacing:.05em;}
+.fm{font-size:clamp(8.5px,1vw,10px);color:rgba(244,239,230,0.28);text-align:right;line-height:1.6;}
+
+/* MOBILE */
+@media(max-width:580px){
+  .g3,.col-hdrs,.desp,.sec,.row,.result{grid-template-columns:1fr;}
+  .ch-ref{border-right:none;border-bottom:.5px solid rgba(255,255,255,0.07);}
+  .ch-viv{border-right:none;}
+  .dc{border-right:none;border-bottom:.5px solid rgba(255,255,255,0.05);padding:10px 14px;}
+  .dc:last-child{border-bottom:none;}
+  .m4{grid-template-columns:1fr 1fr;}
+  .mc{border-right:.5px solid rgba(255,255,255,0.06);border-bottom:.5px solid rgba(255,255,255,0.06);}
+  .mc:nth-child(2n){border-right:none;}
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:var(--ff-b);background:var(--n2);color:var(--cr1);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-img{display:block;width:100%;}
-a{text-decoration:none;}
-
-/* ═══════════════════════ ANIMATIONS ═══════════════════════ */
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-@keyframes shimmer{0%{background-position:-200% center;}100%{background-position:200% center;}}
-@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-@keyframes drawLine{from{stroke-dashoffset:1000;}to{stroke-dashoffset:0;}}
-@keyframes pulse{0%,100%{opacity:0.6;}50%{opacity:1;}}
-@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-
-.rev{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease;}
-.rev.in{opacity:1;transform:translateY(0);}
-.d1{transition-delay:.08s}.d2{transition-delay:.17s}.d3{transition-delay:.26s}.d4{transition-delay:.35s}
-
-/* ═══════════════════════ NAV ═══════════════════════ */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  height:56px;display:flex;align-items:center;justify-content:space-between;
-  padding:0 clamp(14px,4vw,48px);
-  background:rgba(6,14,24,0.97);backdrop-filter:blur(14px);
-  border-bottom:.5px solid var(--goldl);
+@media print{
+  body{background:#0D1B2A;padding:6mm;}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
 }
-.nav-logo{font-family:var(--ff-d);font-size:clamp(16px,2.2vw,21px);font-weight:600;color:var(--cr1);}
-.nav-logo em{font-style:normal;background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.nav-menu{display:flex;gap:clamp(12px,2.2vw,28px);list-style:none;}
-.nav-menu a{font-size:clamp(9px,1.1vw,11px);letter-spacing:.12em;text-transform:uppercase;color:var(--cr4);transition:color .2s;}
-.nav-menu a:hover{color:var(--gold);}
-.nav-btn{background:var(--gold)!important;color:var(--n2)!important;padding:6px 16px!important;border-radius:3px;font-weight:600!important;}
-.nav-btn:hover{background:var(--gold2)!important;}
-@media(max-width:600px){.nav-menu{display:none;}}
-
-/* ═══════════════════════ HERO ═══════════════════════ */
-.hero{
-  min-height:100vh;position:relative;
-  display:flex;align-items:center;
-  background:var(--n1);overflow:hidden;
-}
-
-/* ── Illustrated background scene ── */
-.hero-scene{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(13,40,64,0.95) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 80% at 20% 60%, rgba(6,14,24,0.98) 0%, transparent 60%),
-    linear-gradient(135deg, #060e18 0%, #0d1f32 40%, #0a1828 100%);
-}
-
-/* SVG illustration */
-.hero-svg{
-  position:absolute;right:0;top:0;bottom:0;
-  width:62%;height:100%;
-  opacity:0.88;
-}
-
-/* Grain overlay */
-.hero-grain{
-  position:absolute;inset:0;pointer-events:none;opacity:.03;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:160px;
-}
-
-/* Left gradient mask over the SVG scene */
-.hero-mask{
-  position:absolute;inset:0;
-  background:linear-gradient(90deg, var(--n1) 0%, rgba(6,14,24,0.92) 30%, rgba(6,14,24,0.4) 60%, transparent 100%);
-}
-
-.hero-content{
-  position:relative;z-index:2;
-  max-width:1080px;margin:0 auto;
-  padding:104px clamp(16px,5vw,52px) 72px;
-  width:100%;
-}
-.hero-eyebrow{
-  display:flex;align-items:center;gap:10px;margin-bottom:16px;
-  animation:fadeUp .65s ease both .18s;
-}
-.hey-line{width:32px;height:1px;background:var(--gold);}
-.hey-txt{font-size:clamp(9px,1.2vw,10.5px);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500;}
-
-.hero-title{
-  font-family:var(--ff-d);
-  /* MOBILE FIRST — legível em 320px */
-  font-size:clamp(44px,11vw,100px);
-  font-weight:300;color:var(--cr1);
-  line-height:.9;letter-spacing:-.01em;
-  animation:fadeUp .65s ease both .30s;
-}
-.hero-title strong{font-weight:700;display:block;}
-.hero-title em{
-  font-style:italic;font-weight:300;display:block;
-  background:linear-gradient(90deg,var(--gold) 0%,var(--gold2) 50%,var(--gold) 100%);
-  background-size:200% auto;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:shimmer 6s linear infinite;
-}
-
-.hero-lead{
-  /* MOBILE FIRST — mínimo 15px para leitura confortável */
-  font-size:clamp(15px,2.2vw,20px);
-  color:var(--cr3);max-width:480px;line-height:1.65;font-weight:300;
-  margin-top:18px;
-  animation:fadeUp .65s ease both .44s;
-}
-
-.hero-kpis{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:clamp(8px,2vw,16px);
-  margin:clamp(24px,4vw,44px) 0;
-  animation:fadeUp .65s ease both .58s;
-}
-.hero-kpi{
-  background:rgba(255,255,255,0.04);
-  border:.5px solid var(--goldl);
-  border-radius:var(--r);
-  padding:clamp(12px,2vw,16px) clamp(10px,1.5vw,14px);
-}
-.hero-kpi-num{
-  font-family:var(--ff-d);
-  /* Legível no mobile */
-  font-size:clamp(20px,3.5vw,40px);
-  font-weight:600;color:var(--gold);line-height:1;margin-bottom:4px;
-}
-.hero-kpi-lbl{
-  font-size:clamp(9px,1.1vw,10.5px);
-  letter-spacing:.1em;text-transform:uppercase;color:var(--cr4);line-height:1.3;
-}
-
-.hero-btns{
-  display:flex;gap:10px;flex-wrap:wrap;
-  animation:fadeUp .65s ease both .70s;
-}
-.btn-p{
-  background:var(--gold);color:var(--n2);
-  padding:clamp(12px,1.8vw,15px) clamp(20px,3vw,32px);
-  border-radius:3px;font-size:clamp(11px,1.3vw,13px);
-  letter-spacing:.09em;text-transform:uppercase;font-weight:600;
-  transition:all .25s;display:inline-flex;align-items:center;gap:6px;
-}
-.btn-p:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,.28);}
-.btn-s{
-  border:.5px solid rgba(201,168,76,.35);color:var(--gold);
-  padding:clamp(12px,1.8vw,15px) clamp(20px,3vw,32px);
-  border-radius:3px;font-size:clamp(11px,1.3vw,13px);
-  letter-spacing:.09em;text-transform:uppercase;font-weight:500;
-  transition:all .25s;
-}
-.btn-s:hover{background:rgba(201,168,76,.07);border-color:var(--gold);}
-
-.hero-scroll{
-  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  animation:floatY 3s ease-in-out infinite;opacity:.4;
-}
-.hero-scroll-bar{width:1px;height:32px;background:linear-gradient(to bottom,var(--gold),transparent);}
-.hero-scroll-txt{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
-
-@media(max-width:520px){
-  .hero-kpis{grid-template-columns:1fr 1fr;}
-  .hero-svg{width:100%;opacity:.15;}
-  .hero-mask{background:linear-gradient(to bottom,rgba(6,14,24,0.6) 0%,rgba(6,14,24,0.85) 100%);}
-}
-
-/* ═══════════════════════ SHARED ═══════════════════════ */
-.s-eye{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
-.s-eye-bar{width:32px;height:1px;background:var(--gold);}
-.s-eye-txt{font-size:clamp(9px,1.1vw,10.5px);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500;}
-
-/* TÍTULOS — mobile-first calibrado */
-.s-title{
-  font-family:var(--ff-d);
-  font-size:clamp(28px,5.5vw,56px);
-  font-weight:600;color:var(--cr1);
-  line-height:1.06;letter-spacing:-.01em;
-}
-.s-title em{font-style:italic;font-weight:300;color:var(--cr3);}
-
-/* BODY TEXT — nunca abaixo de 14px */
-.s-body{font-size:clamp(14px,1.8vw,17px);color:var(--cr3);line-height:1.78;font-weight:300;}
-
-.inner{max-width:1080px;margin:0 auto;}
-
-/* ═══════════════════════ SECTION A — TESE ═══════════════════════ */
-.sa{background:var(--n2);padding:var(--pad);position:relative;overflow:hidden;}
-.sa::before{content:'';position:absolute;top:-150px;right:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.05) 0%,transparent 65%);pointer-events:none;}
-.sa-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,72px);align-items:center;}
-.sa-quote{font-family:var(--ff-d);font-size:clamp(15px,2.2vw,21px);font-style:italic;font-weight:300;color:var(--gold);line-height:1.6;border-left:2px solid var(--gold);padding-left:20px;margin-top:24px;}
-.sa-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.sa-card{background:var(--w3);border:.5px solid var(--goldl);border-radius:var(--r);padding:clamp(14px,2vw,20px);transition:background .3s,border-color .3s;}
-.sa-card:hover{background:rgba(201,168,76,.05);border-color:rgba(201,168,76,.38);}
-.sa-card-lbl{font-size:clamp(8.5px,1.1vw,10px);letter-spacing:.13em;text-transform:uppercase;color:var(--cr4);margin-bottom:5px;}
-.sa-card-num{font-family:var(--ff-d);font-size:clamp(24px,4vw,42px);font-weight:600;color:var(--gold);line-height:1;}
-.sa-card-desc{font-size:clamp(11px,1.3vw,12.5px);color:var(--cr4);line-height:1.55;margin-top:6px;}
-@media(max-width:700px){.sa-grid{grid-template-columns:1fr;}}
-
-/* ═══════════════════════ SECTION B — LOCAL ═══════════════════════ */
-.sb{background:var(--n3);padding:var(--pad);}
-.sb-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,60px);align-items:start;margin-top:clamp(28px,4vw,48px);}
-.sb-img{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;position:relative;box-shadow:0 24px 64px rgba(0,0,0,.45);}
-.sb-img img{width:100%;height:100%;object-fit:cover;transition:transform 7s ease;}
-.sb-img:hover img{transform:scale(1.04);}
-.sb-badge{position:absolute;bottom:16px;left:16px;background:rgba(6,14,24,.93);border:.5px solid var(--goldl);border-radius:4px;padding:9px 14px;backdrop-filter:blur(8px);}
-.sb-badge-lbl{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
-.sb-badge-val{font-family:var(--ff-d);font-size:18px;font-weight:600;color:var(--cr1);}
-.sb-facts{display:flex;flex-direction:column;}
-.sb-fact{display:flex;gap:12px;align-items:flex-start;padding:clamp(12px,1.7vw,16px) 0;border-bottom:.5px solid var(--w10);}
-.sb-fact:first-child{border-top:.5px solid var(--w10);}
-.sb-fact-ico{width:32px;height:32px;border-radius:50%;background:var(--goldf);border:.5px solid var(--goldl);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:1px;}
-.sb-fact-title{font-size:clamp(12px,1.6vw,14px);font-weight:600;color:var(--cr1);margin-bottom:2px;}
-.sb-fact-desc{font-size:clamp(11px,1.4vw,13px);color:var(--cr3);line-height:1.58;}
-@media(max-width:700px){.sb-grid{grid-template-columns:1fr;}}
-
-/* ═══════════════════════ SECTION C — TIPOLOGIAS ═══════════════════════ */
-.sc{background:var(--n2);padding:var(--pad);}
-.sc-sub{font-size:clamp(14px,1.7vw,17px);color:var(--cr3);line-height:1.72;font-weight:300;margin-top:12px;max-width:560px;}
-.sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:clamp(28px,4vw,48px);}
-.tc{background:var(--n4);border:.5px solid var(--goldl);border-radius:var(--r);overflow:hidden;transition:border-color .3s,transform .3s;}
-.tc:hover{border-color:rgba(201,168,76,.44);transform:translateY(-3px);}
-.tc-img{aspect-ratio:4/3;overflow:hidden;position:relative;}
-.tc-img img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease;}
-.tc:hover .tc-img img{transform:scale(1.06);}
-.tc-tag{position:absolute;top:10px;left:10px;font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:600;padding:4px 10px;border-radius:2px;}
-.tc-tag-a{background:rgba(6,14,24,.92);color:var(--gold);border:.5px solid rgba(201,168,76,.4);}
-.tc-tag-b{background:rgba(6,14,24,.92);color:var(--blue);border:.5px solid rgba(106,174,232,.4);}
-.tc-tag-c{background:rgba(6,14,24,.92);color:var(--green);border:.5px solid rgba(77,191,133,.4);}
-.tc-body{padding:clamp(14px,2vw,20px);}
-.tc-name{font-family:var(--ff-d);font-size:clamp(18px,2.6vw,25px);font-weight:600;color:var(--cr1);margin-bottom:2px;}
-.tc-sub{font-size:clamp(9.5px,1.2vw,11px);color:var(--cr4);letter-spacing:.04em;margin-bottom:12px;line-height:1.4;}
-.tc-specs{display:flex;flex-direction:column;}
-.tc-spec{display:flex;justify-content:space-between;align-items:center;font-size:clamp(10px,1.3vw,12px);padding:6px 0;border-bottom:.5px solid var(--w6);}
-.tc-spec:last-child{border-bottom:none;}
-.tc-spec-l{color:var(--cr4);}
-.tc-spec-r{color:var(--cr2);font-weight:500;}
-.tc-spec-r.gold{color:var(--gold);}
-.tc-spec-r.green{color:var(--green);}
-.tc-spec-r.blue{color:var(--blue);}
-.tc-price{font-family:var(--ff-d);font-size:clamp(18px,2.6vw,26px);font-weight:600;line-height:1;margin-top:10px;padding-top:10px;border-top:.5px solid var(--goldl);}
-.tc-price-range{font-size:clamp(9px,1.1vw,10.5px);color:var(--cr4);margin-top:2px;font-weight:300;}
-@media(max-width:700px){.sc-grid{grid-template-columns:1fr;}}
-@media(min-width:460px) and (max-width:700px){.sc-grid{grid-template-columns:1fr 1fr;}}
-
-/* ═══════════════════════ SECTION D — LIFESTYLE ═══════════════════════ */
-.sd{background:var(--n3);padding:var(--pad);}
-.sd-hdr{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4.5vw,56px);align-items:center;margin-bottom:clamp(28px,4vw,44px);}
-.sd-img{border-radius:var(--r);overflow:hidden;aspect-ratio:16/10;box-shadow:0 20px 56px rgba(0,0,0,.4);}
-.sd-img img{width:100%;height:100%;object-fit:cover;}
-.sd-body{font-size:clamp(13px,1.6vw,16px);color:var(--cr3);line-height:1.78;font-weight:300;margin-top:12px;}
-.am-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-.am{background:var(--n4);border:.5px solid var(--goldl);border-radius:var(--r);padding:clamp(13px,1.8vw,18px) clamp(10px,1.4vw,14px);text-align:center;transition:border-color .3s,background .3s;}
-.am:hover{border-color:rgba(201,168,76,.38);background:rgba(201,168,76,.04);}
-.am-ico{font-size:clamp(18px,2.6vw,26px);margin-bottom:7px;}
-.am-name{font-size:clamp(9px,1.1vw,11px);letter-spacing:.06em;text-transform:uppercase;color:var(--cr3);line-height:1.38;}
-@media(max-width:700px){.sd-hdr{grid-template-columns:1fr;}.am-grid{grid-template-columns:repeat(2,1fr);}}
-
-/* ═══════════════════════ SECTION E — RETORNO ═══════════════════════ */
-.se{background:var(--n2);padding:var(--pad);position:relative;overflow:hidden;}
-.se::before{content:'R$';position:absolute;font-family:var(--ff-d);font-size:300px;font-weight:700;color:rgba(201,168,76,.02);right:-20px;top:50%;transform:translateY(-50%);pointer-events:none;line-height:1;}
-.se-sub{font-size:clamp(14px,1.7vw,17px);color:var(--cr3);line-height:1.72;font-weight:300;margin-top:12px;max-width:520px;}
-.fin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:clamp(28px,4vw,48px);}
-.fc{background:var(--n4);border:.5px solid var(--w10);border-radius:var(--r);padding:clamp(14px,2vw,22px);transition:all .3s;}
-.fc:hover{border-color:var(--goldl);transform:translateY(-2px);}
-.fc.hi{background:rgba(201,168,76,.07);border-color:rgba(201,168,76,.3);}
-.fc-lbl{font-size:clamp(8.5px,1.1vw,10px);letter-spacing:.14em;text-transform:uppercase;color:var(--cr4);margin-bottom:6px;font-weight:500;}
-.fc-num{font-family:var(--ff-d);font-size:clamp(22px,3.8vw,40px);font-weight:700;color:var(--cr1);line-height:1;}
-.fc-num.gold{color:var(--gold);}
-.fc-num.green{color:var(--green);}
-.fc-sub{font-size:clamp(10.5px,1.3vw,12.5px);color:var(--cr4);line-height:1.5;margin-top:5px;}
-.fin-bench{margin-top:clamp(24px,3.5vw,40px);background:var(--n4);border:.5px solid var(--w10);border-radius:var(--r);overflow:hidden;}
-.fin-bench-head{padding:clamp(10px,1.5vw,14px) clamp(14px,2vw,20px);background:var(--goldf);border-bottom:.5px solid var(--goldl);}
-.fin-bench-htxt{font-size:clamp(8.5px,1.1vw,10.5px);letter-spacing:.13em;text-transform:uppercase;color:var(--gold);}
-.fin-bench-row{display:flex;justify-content:space-between;align-items:center;padding:clamp(9px,1.3vw,13px) clamp(14px,2vw,20px);border-bottom:.5px solid var(--w6);flex-wrap:wrap;gap:6px;}
-.fin-bench-row:last-child{border-bottom:none;}
-.fin-bench-n{font-size:clamp(11px,1.4vw,13.5px);color:var(--cr3);}
-.fin-bench-v{font-size:clamp(11px,1.5vw,14px);color:var(--green);font-weight:600;}
-.fin-bench-ref{font-size:clamp(9.5px,1.1vw,11px);color:var(--cr4);margin-left:6px;}
-@media(max-width:700px){.fin-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:440px){.fin-grid{grid-template-columns:1fr;}}
-
-/* ═══════════════════════ SECTION F — CAPITAL ═══════════════════════ */
-.sf{background:var(--n3);padding:var(--pad);}
-.sf-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4.5vw,56px);margin-top:clamp(28px,4vw,48px);align-items:start;}
-.sf-models{display:flex;flex-direction:column;gap:8px;}
-.mc{background:var(--n4);border:.5px solid var(--w10);border-radius:var(--r);padding:clamp(12px,1.7vw,18px);transition:border-color .3s;}
-.mc.best{background:var(--greenf);border-color:var(--greenl);}
-.mc.bad{background:var(--redf);border-color:var(--redl);}
-.mc-eye{font-size:clamp(7.5px,1vw,9px);letter-spacing:.11em;text-transform:uppercase;font-weight:600;margin-bottom:3px;}
-.mc-eye-g{color:rgba(77,191,133,.75);}
-.mc-eye-w{color:var(--cr4);}
-.mc-eye-r{color:rgba(224,112,112,.7);}
-.mc-name{font-size:clamp(11px,1.4vw,13.5px);font-weight:600;color:var(--cr1);margin-bottom:8px;line-height:1.3;}
-.mc-row{display:flex;justify-content:space-between;font-size:clamp(10px,1.2vw,12px);padding:4px 0;border-bottom:.5px solid var(--w6);}
-.mc-row:last-of-type{border-bottom:none;}
-.mc-rl{color:var(--cr4);}
-.mc-rv{color:var(--cr2);font-weight:500;}
-.mc-rv.g{color:var(--green);}
-.mc-rv.r{color:var(--red);}
-.sf-right{display:flex;flex-direction:column;gap:10px;}
-.exp-box{background:var(--n4);border:.5px solid var(--goldl);border-radius:var(--r);padding:clamp(16px,2.3vw,24px);}
-.exp-box-title{font-size:clamp(8.5px,1.1vw,10px);letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-.exp-duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
-.exp-c{border-radius:4px;padding:clamp(11px,1.6vw,15px);}
-.exp-c-b{background:var(--bluef);border:.5px solid var(--bluel);}
-.exp-c-g{background:var(--greenf);border:.5px solid var(--greenl);}
-.exp-c-lbl{font-size:clamp(7.5px,1vw,9px);text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px;}
-.exp-c-lbl-b{color:rgba(106,174,232,.7);}
-.exp-c-lbl-g{color:rgba(77,191,133,.7);}
-.exp-c-num{font-family:var(--ff-d);font-size:clamp(20px,3vw,28px);font-weight:700;line-height:1;}
-.exp-c-num-b{color:var(--blue);}
-.exp-c-num-g{color:var(--green);}
-.exp-c-sub{font-size:clamp(9px,1.1vw,10.5px);color:var(--cr4);margin-top:3px;line-height:1.45;}
-.ladder{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
-.rung{display:flex;align-items:center;gap:9px;font-size:clamp(10px,1.3vw,12.5px);}
-.rung-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
-.rung-l{color:var(--cr3);flex:1;}
-.rung-v{color:var(--cr2);font-weight:500;white-space:nowrap;}
-.rung-v.g{color:var(--green);}
-.moic-box{background:var(--greenf);border:.5px solid var(--greenl);border-radius:var(--r);padding:clamp(14px,2vw,20px);text-align:center;}
-.moic-lbl{font-size:clamp(8px,1.1vw,9.5px);letter-spacing:.13em;text-transform:uppercase;color:rgba(77,191,133,.65);margin-bottom:5px;}
-.moic-num{font-family:var(--ff-d);font-size:clamp(40px,7vw,68px);font-weight:700;color:var(--green);line-height:1;}
-.moic-sub{font-size:clamp(10px,1.3vw,12.5px);color:var(--cr4);margin-top:5px;line-height:1.5;}
-@media(max-width:700px){.sf-grid{grid-template-columns:1fr;}}
-
-/* ═══════════════════════ SECTION G — MERCADO ═══════════════════════ */
-.sg{background:var(--n2);padding:var(--pad);}
-.sg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:clamp(28px,4vw,48px);}
-.mgc{background:var(--n4);border:.5px solid var(--w10);border-radius:var(--r);padding:clamp(16px,2.3vw,24px);transition:border-color .3s;}
-.mgc:hover{border-color:var(--goldl);}
-.mgc-ico{font-size:clamp(20px,2.8vw,28px);margin-bottom:9px;}
-.mgc-title{font-size:clamp(13px,1.7vw,15.5px);font-weight:600;color:var(--cr1);margin-bottom:6px;}
-.mgc-body{font-size:clamp(11.5px,1.4vw,13.5px);color:var(--cr3);line-height:1.68;}
-.mgc-hl{font-family:var(--ff-d);font-size:clamp(17px,2.5vw,23px);font-weight:600;color:var(--gold);display:block;margin-top:8px;}
-@media(max-width:640px){.sg-grid{grid-template-columns:1fr;}}
-@media(min-width:440px) and (max-width:640px){.sg-grid{grid-template-columns:1fr 1fr;}}
-
-/* ═══════════════════════ SECTION H — TIME ═══════════════════════ */
-.sh{background:var(--n3);padding:var(--pad);}
-.sh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:clamp(28px,4vw,48px);}
-.team-c{background:var(--n4);border:.5px solid var(--w10);border-radius:var(--r);padding:clamp(20px,2.8vw,30px) clamp(16px,2.2vw,24px);text-align:center;transition:all .3s;}
-.team-c:hover{border-color:var(--goldl);transform:translateY(-3px);}
-.team-av{width:56px;height:56px;border-radius:50%;background:var(--goldf);border:.5px solid var(--goldl);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-size:20px;font-weight:600;color:var(--gold);}
-.team-name{font-size:clamp(14px,1.8vw,17px);font-weight:600;color:var(--cr1);margin-bottom:3px;}
-.team-role{font-size:clamp(9px,1.1vw,10.5px);letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
-.team-bio{font-size:clamp(11.5px,1.4vw,13.5px);color:var(--cr3);line-height:1.63;}
-@media(max-width:620px){.sh-grid{grid-template-columns:1fr;}}
-
-/* ═══════════════════════ SECTION I — CTA ═══════════════════════ */
-.si{background:var(--n1);padding:var(--pad);position:relative;overflow:hidden;text-align:center;}
-.si::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.07) 0%,transparent 65%);pointer-events:none;}
-.si-inner{position:relative;z-index:1;max-width:620px;margin:0 auto;}
-.si-pre{font-size:clamp(9.5px,1.2vw,11px);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
-.si-title{font-family:var(--ff-d);font-size:clamp(30px,5.5vw,64px);font-weight:300;color:var(--cr1);line-height:1.06;margin-bottom:12px;}
-.si-title em{font-style:italic;color:var(--gold);}
-.si-body{font-size:clamp(14px,1.7vw,17px);color:var(--cr3);line-height:1.75;font-weight:300;margin-bottom:clamp(24px,4vw,40px);}
-.si-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-.si-disc{font-size:clamp(9px,1.1vw,10.5px);color:rgba(244,239,230,.2);margin-top:20px;line-height:1.6;}
-
-/* ═══════════════════════ FOOTER ═══════════════════════ */
-footer{background:var(--n1);border-top:.5px solid var(--goldl);padding:clamp(18px,3vw,32px) clamp(16px,5vw,52px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
-.ft-brand{font-family:var(--ff-d);font-size:clamp(15px,2vw,19px);font-weight:600;color:var(--cr1);}
-.ft-brand em{font-style:normal;color:var(--gold);}
-.ft-creci{font-size:clamp(7.5px,1vw,9px);color:var(--cr4);margin-top:2px;letter-spacing:.07em;}
-.ft-meta{font-size:clamp(8px,1.1vw,10px);color:var(--cr4);text-align:right;line-height:1.6;}
-
 </style>
 </head>
 <body>
+<div class="card">
 
-<!-- ══════ NAV ══════ -->
-<nav id="nav">
-  <div class="nav-logo">Vivacaé <em>Caruaru</em></div>
-  <ul class="nav-menu">
-    <li><a href="#tese">A Tese</a></li>
-    <li><a href="#produto">Produto</a></li>
-    <li><a href="#retorno">Retorno</a></li>
-    <li><a href="#capital">Estrutura</a></li>
-    <li><a href="#contato" class="nav-btn">Participar</a></li>
-  </ul>
-</nav>
-
-<!-- ══════ HERO ══════ -->
-<section class="hero">
-  <div class="hero-scene"></div>
-
-  <!-- ILLUSTRATED SCENE — SVG gerado em canvas -->
-  <svg class="hero-svg" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-    <defs>
-      <linearGradient id="bg-grad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#060e18"/>
-        <stop offset="100%" stop-color="#0d2035"/>
-      </linearGradient>
-      <linearGradient id="screen1" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#0d2540"/>
-        <stop offset="100%" stop-color="#0a1828"/>
-      </linearGradient>
-      <linearGradient id="gold-grad" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#C9A84C"/>
-        <stop offset="100%" stop-color="#e8c96e"/>
-      </linearGradient>
-      <linearGradient id="bar-green" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#4DBF85"/>
-        <stop offset="100%" stop-color="#2a8f5a"/>
-      </linearGradient>
-      <linearGradient id="bar-blue" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#5A9AE8"/>
-        <stop offset="100%" stop-color="#2a5a9a"/>
-      </linearGradient>
-      <linearGradient id="bar-gold" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#C9A84C"/>
-        <stop offset="100%" stop-color="#7a5a1a"/>
-      </linearGradient>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="3" result="blur"/>
-        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-      </filter>
-      <filter id="soft-shadow">
-        <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
-      </filter>
-      <clipPath id="screen-clip">
-        <rect x="320" y="60" width="420" height="260" rx="8"/>
-      </clipPath>
-      <clipPath id="table-clip">
-        <rect x="320" y="345" width="420" height="220" rx="6"/>
-      </clipPath>
-    </defs>
-
-    <!-- Background -->
-    <rect width="800" height="600" fill="url(#bg-grad)"/>
-
-    <!-- Ambient glow top right -->
-    <ellipse cx="700" cy="120" rx="280" ry="180" fill="rgba(201,168,76,0.04)"/>
-    <ellipse cx="600" cy="400" rx="200" ry="150" fill="rgba(77,191,133,0.03)"/>
-
-    <!-- ── MAIN MONITOR ── -->
-    <rect x="310" y="50" width="440" height="280" rx="10" fill="#0a1520" stroke="#C9A84C" stroke-width="0.8" opacity="0.9" filter="url(#soft-shadow)"/>
-    <!-- Screen content -->
-    <rect x="320" y="60" width="420" height="260" rx="6" fill="url(#screen1)"/>
-
-    <!-- Screen header bar -->
-    <rect x="320" y="60" width="420" height="28" rx="6" fill="#0d2a40"/>
-    <rect x="330" y="73" width="80" height="2" rx="1" fill="url(#gold-grad)" opacity="0.8"/>
-    <text x="330" y="71" font-family="monospace" font-size="7" fill="#C9A84C" opacity="0.9">VIVACAE · LHL-TECH INTELLIGENCE</text>
-    <circle cx="715" cy="74" r="4" fill="#4DBF85" opacity="0.8"/>
-    <circle cx="727" cy="74" r="4" fill="#C9A84C" opacity="0.6"/>
-    <circle cx="739" cy="74" r="4" fill="#e07070" opacity="0.6"/>
-
-    <!-- Chart title on screen -->
-    <text x="335" y="105" font-family="Georgia,serif" font-size="10" fill="#F4EFE6" opacity="0.9" font-weight="bold">Desempenho Financeiro · Modelo M1</text>
-    <text x="335" y="117" font-family="monospace" font-size="7" fill="#C9A84C" opacity="0.7">VGV R$ 170,28MM · Margem 22,5% · TIR 28–32%</text>
-
-    <!-- Bar chart -->
-    <g transform="translate(335, 135)">
-      <!-- Grid lines -->
-      <line x1="0" y1="0" x2="380" y2="0" stroke="#ffffff" stroke-width="0.3" opacity="0.1"/>
-      <line x1="0" y1="30" x2="380" y2="30" stroke="#ffffff" stroke-width="0.3" opacity="0.1"/>
-      <line x1="0" y1="60" x2="380" y2="60" stroke="#ffffff" stroke-width="0.3" opacity="0.1"/>
-      <line x1="0" y1="90" x2="380" y2="90" stroke="#ffffff" stroke-width="0.3" opacity="0.1"/>
-
-      <!-- Bars -->
-      <rect x="10"  y="20" width="42" height="70" rx="2" fill="url(#bar-green)" opacity="0.9"/>
-      <rect x="64"  y="35" width="42" height="55" rx="2" fill="url(#bar-blue)"  opacity="0.9"/>
-      <rect x="118" y="5"  width="42" height="85" rx="2" fill="url(#bar-gold)"  opacity="0.9"/>
-      <rect x="172" y="28" width="42" height="62" rx="2" fill="url(#bar-green)" opacity="0.7"/>
-      <rect x="226" y="42" width="42" height="48" rx="2" fill="url(#bar-blue)"  opacity="0.7"/>
-      <rect x="280" y="15" width="42" height="75" rx="2" fill="url(#bar-gold)"  opacity="0.7"/>
-      <rect x="334" y="30" width="42" height="60" rx="2" fill="url(#bar-green)" opacity="0.8"/>
-
-      <!-- Bar labels -->
-      <text x="31"  y="102" font-family="monospace" font-size="6" fill="#4DBF85" text-anchor="middle" opacity="0.8">VGV</text>
-      <text x="85"  y="102" font-family="monospace" font-size="6" fill="#5A9AE8" text-anchor="middle" opacity="0.8">TDC</text>
-      <text x="139" y="102" font-family="monospace" font-size="6" fill="#C9A84C" text-anchor="middle" opacity="0.8">Lucro</text>
-      <text x="193" y="102" font-family="monospace" font-size="6" fill="#4DBF85" text-anchor="middle" opacity="0.8">TIR</text>
-      <text x="247" y="102" font-family="monospace" font-size="6" fill="#5A9AE8" text-anchor="middle" opacity="0.8">MOIC</text>
-      <text x="301" y="102" font-family="monospace" font-size="6" fill="#C9A84C" text-anchor="middle" opacity="0.8">M1</text>
-      <text x="355" y="102" font-family="monospace" font-size="6" fill="#4DBF85" text-anchor="middle" opacity="0.8">M2</text>
-
-      <!-- Line chart overlay -->
-      <polyline points="31,15 85,28 139,3 193,22 247,38 301,12 355,25"
-        fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.6"/>
-      <circle cx="31"  cy="15" r="2.5" fill="#C9A84C" opacity="0.8"/>
-      <circle cx="139" cy="3"  r="2.5" fill="#C9A84C" opacity="0.8"/>
-      <circle cx="301" cy="12" r="2.5" fill="#C9A84C" opacity="0.8"/>
-    </g>
-
-    <!-- Screen status line -->
-    <rect x="320" y="298" width="420" height="22" fill="#080f1a"/>
-    <text x="330" y="313" font-family="monospace" font-size="7" fill="#4DBF85" opacity="0.8">● LIVE  |  Atualizado Abr 2026  |  LHL-Tech v3.1  |  236 un · R$170MM VGV · Circular 16% TDC</text>
-
-    <!-- Monitor stand -->
-    <rect x="510" y="330" width="20" height="30" rx="2" fill="#0a1520"/>
-    <rect x="480" y="358" width="80" height="6" rx="3" fill="#0a1520" stroke="#C9A84C" stroke-width="0.4" opacity="0.5"/>
-
-    <!-- ── DATA TABLE (lower right) ── -->
-    <rect x="312" y="340" width="436" height="220" rx="8" fill="#0a1520" stroke="rgba(201,168,76,0.3)" stroke-width="0.6" filter="url(#soft-shadow)"/>
-
-    <!-- Table header -->
-    <rect x="312" y="340" width="436" height="24" rx="8" fill="#0d2035"/>
-    <rect x="312" y="352" width="436" height="12" fill="#0d2035"/>
-    <text x="324" y="355" font-family="Georgia,serif" font-size="8" fill="#C9A84C" font-weight="bold">FICHA TÉCNICA · COMPARATIVO DE ESTRUTURAÇÃO</text>
-
-    <!-- Table rows -->
-    <g font-family="monospace" font-size="7.5" opacity="0.85">
-      <rect x="312" y="364" width="436" height="16" fill="rgba(255,255,255,0.02)"/>
-      <text x="324" y="375" fill="#F4EFE6" opacity="0.6">Item</text>
-      <text x="490" y="375" fill="#5A9AE8" font-weight="bold">Referência Mercado</text>
-      <text x="632" y="375" fill="#4DBF85" font-weight="bold">Vivacaé M1</text>
-
-      <line x1="312" y1="380" x2="748" y2="380" stroke="#C9A84C" stroke-width="0.4" opacity="0.3"/>
-
-      <text x="324" y="393" fill="#F4EFE6" opacity="0.55">VGV Líquido</text>
-      <text x="490" y="393" fill="#5A9AE8">~R$ 65 MM</text>
-      <text x="632" y="393" fill="#4DBF85">R$ 153,25 MM</text>
-
-      <rect x="312" y="397" width="436" height="14" fill="rgba(255,255,255,0.015)"/>
-      <text x="324" y="407" fill="#F4EFE6" opacity="0.55">Lucro Total</text>
-      <text x="490" y="407" fill="#5A9AE8">R$ 15,63 MM</text>
-      <text x="632" y="407" fill="#4DBF85">R$ 34,54 MM</text>
-
-      <text x="324" y="421" fill="#F4EFE6" opacity="0.55">Margem Total</text>
-      <text x="490" y="421" fill="#5A9AE8">18,75%–23,9%</text>
-      <text x="632" y="421" fill="#4DBF85">22,5% ✓</text>
-
-      <rect x="312" y="425" width="436" height="14" fill="rgba(255,255,255,0.015)"/>
-      <text x="324" y="435" fill="#F4EFE6" opacity="0.55">Fin. Obra / TDC</text>
-      <text x="490" y="435" fill="#5A9AE8">16% circular</text>
-      <text x="632" y="435" fill="#4DBF85">16% circular ✓</text>
-
-      <text x="324" y="449" fill="#F4EFE6" opacity="0.55">Exposição máx. caixa</text>
-      <text x="490" y="449" fill="#5A9AE8">R$ -444K</text>
-      <text x="632" y="449" fill="#4DBF85">~R$ -600K</text>
-
-      <rect x="312" y="453" width="436" height="14" fill="rgba(255,255,255,0.015)"/>
-      <text x="324" y="463" fill="#F4EFE6" opacity="0.55">MOIC Real</text>
-      <text x="490" y="463" fill="#5A9AE8">35×+</text>
-      <text x="632" y="463" fill="#C9A84C" font-weight="bold">~52× ↑</text>
-
-      <line x1="312" y1="468" x2="748" y2="468" stroke="#C9A84C" stroke-width="0.4" opacity="0.3"/>
-      <text x="324" y="479" fill="#C9A84C" opacity="0.7">TIR Equity (s/ giro)</text>
-      <text x="490" y="479" fill="#5A9AE8">N/D</text>
-      <text x="632" y="479" fill="#4DBF85" font-weight="bold">28–32% a.a.</text>
-
-      <rect x="312" y="482" width="436" height="14" fill="rgba(255,255,255,0.015)"/>
-      <text x="324" y="493" fill="#F4EFE6" opacity="0.55">TIR Real (c/ giro cruzado)</text>
-      <text x="490" y="493" fill="#5A9AE8">&gt;150% a.a.</text>
-      <text x="632" y="493" fill="#4DBF85" font-weight="bold">&gt;200% a.a. ↑</text>
-
-      <line x1="312" y1="497" x2="748" y2="497" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
-      <text x="324" y="553" fill="#C9A84C" font-size="6.5" opacity="0.5">LHL-Tech Intelligence · Ari Carvalho · CRECI-FL SL3467205 · Abr 2026</text>
-    </g>
-
-    <!-- ── PEOPLE SILHOUETTES (left of screen) ── -->
-    <g opacity="0.22" fill="#F4EFE6">
-      <!-- Person 1 — seated, looking at screen -->
-      <ellipse cx="190" cy="290" rx="22" ry="22" fill="#1a3050" opacity="0.9"/>
-      <circle cx="190" cy="268" r="14"/>
-      <path d="M162,310 Q190,285 218,310 L224,380 Q190,370 156,380 Z"/>
-      <rect x="168" y="305" width="44" height="8" rx="4" opacity="0.5"/>
-
-      <!-- Person 2 — standing -->
-      <circle cx="120" cy="210" r="16"/>
-      <path d="M96,240 Q120,225 144,240 L148,360 Q120,355 92,360 Z"/>
-      <line x1="96" y1="270" x2="70" y2="320" stroke="#F4EFE6" stroke-width="8" stroke-linecap="round"/>
-      <line x1="144" y1="270" x2="168" y2="300" stroke="#F4EFE6" stroke-width="8" stroke-linecap="round"/>
-
-      <!-- Person 3 — seated right -->
-      <circle cx="258" cy="275" r="13"/>
-      <path d="M238,298 Q258,285 278,298 L282,370 Q258,365 234,370 Z"/>
-    </g>
-
-    <!-- ── LOGO BADGES on wall ── -->
-    <!-- LHL-Tech badge -->
-    <rect x="30" y="40" width="120" height="44" rx="6" fill="#0D1B2A" stroke="#C9A84C" stroke-width="1.2"/>
-    <text x="90" y="55" font-family="Georgia,serif" font-size="9" fill="#C9A84C" font-weight="bold" text-anchor="middle">LHL-Tech</text>
-    <text x="90" y="67" font-family="monospace" font-size="6" fill="#F4EFE6" text-anchor="middle" opacity="0.7">Intelligence</text>
-    <line x1="42" y1="78" x2="138" y2="78" stroke="#C9A84C" stroke-width="0.5" opacity="0.6"/>
-    <text x="90" y="88" font-family="monospace" font-size="5.5" fill="#C9A84C" text-anchor="middle" opacity="0.5">NOVA CARUARU · PE</text>
-    <rect x="30" y="40" width="120" height="44" rx="6" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.3"/>
-
-    <!-- Alten badge -->
-    <rect x="168" y="40" width="120" height="44" rx="6" fill="#0D1B2A" stroke="#5A9AE8" stroke-width="1.2"/>
-    <text x="228" y="55" font-family="Georgia,serif" font-size="9" fill="#5A9AE8" font-weight="bold" text-anchor="middle">Alten</text>
-    <text x="228" y="67" font-family="monospace" font-size="6" fill="#F4EFE6" text-anchor="middle" opacity="0.7">Construtora · PE</text>
-    <line x1="180" y1="78" x2="276" y2="78" stroke="#5A9AE8" stroke-width="0.5" opacity="0.6"/>
-    <text x="228" y="88" font-family="monospace" font-size="5.5" fill="#5A9AE8" text-anchor="middle" opacity="0.5">REFERÊNCIA DE MERCADO</text>
-
-    <!-- ── DESK / TABLE elements ── -->
-    <rect x="30" y="370" width="290" height="10" rx="3" fill="#0a1828" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
-    <!-- Laptop outline on desk -->
-    <rect x="60" y="310" width="180" height="60" rx="4" fill="#0a1828" stroke="rgba(201,168,76,0.3)" stroke-width="0.7"/>
-    <rect x="64" y="313" width="172" height="53" rx="3" fill="#0d2035"/>
-    <!-- Laptop screen mini data -->
-    <text x="72" y="326" font-family="monospace" font-size="5.5" fill="#4DBF85" opacity="0.8">VGV  R$170,28MM ▲</text>
-    <text x="72" y="336" font-family="monospace" font-size="5.5" fill="#C9A84C" opacity="0.7">TIR  28–32% a.a.</text>
-    <text x="72" y="346" font-family="monospace" font-size="5.5" fill="#5A9AE8" opacity="0.7">MOIC  ~52× ●</text>
-    <line x1="64" y1="350" x2="236" y2="350" stroke="#C9A84C" stroke-width="0.3" opacity="0.3"/>
-    <text x="72" y="359" font-family="monospace" font-size="5" fill="#F4EFE6" opacity="0.4">Modelo M1 · Circular 16% TDC ✓</text>
-
-    <!-- Coffee cup silhouette -->
-    <rect x="258" y="345" width="26" height="28" rx="3" fill="#0a1828" stroke="rgba(201,168,76,0.25)" stroke-width="0.7"/>
-    <ellipse cx="271" cy="345" rx="13" ry="4" fill="#C9A84C" opacity="0.3"/>
-    <path d="M284,355 Q292,355 292,362 Q292,369 284,369" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="2"/>
-
-    <!-- ── KPI FLOATING CARDS ── -->
-    <g filter="url(#soft-shadow)">
-      <!-- Card 1 -->
-      <rect x="30" y="140" width="104" height="56" rx="5" fill="#0D1B2A" stroke="rgba(201,168,76,0.35)" stroke-width="0.7"/>
-      <text x="42" y="158" font-family="monospace" font-size="6.5" fill="#C9A84C" opacity="0.7">LUCRO TOTAL M1</text>
-      <text x="42" y="174" font-family="Georgia,serif" font-size="15" fill="#4DBF85" font-weight="bold">R$34,54MM</text>
-      <text x="42" y="188" font-family="monospace" font-size="5.5" fill="#F4EFE6" opacity="0.4">Margem 22,5%</text>
-
-      <!-- Card 2 -->
-      <rect x="148" y="160" width="94" height="50" rx="5" fill="#0D1B2A" stroke="rgba(77,191,133,0.35)" stroke-width="0.7"/>
-      <text x="160" y="176" font-family="monospace" font-size="6.5" fill="#4DBF85" opacity="0.7">MOIC REAL</text>
-      <text x="160" y="196" font-family="Georgia,serif" font-size="18" fill="#C9A84C" font-weight="bold">~52×</text>
-      <text x="160" y="204" font-family="monospace" font-size="5.5" fill="#F4EFE6" opacity="0.4">c/ giro cruzado</text>
-    </g>
-
-    <!-- ── GRID / CIRCUIT decorative lines ── -->
-    <g stroke="rgba(201,168,76,0.06)" stroke-width="0.5" fill="none">
-      <line x1="0" y1="100" x2="310" y2="100"/>
-      <line x1="0" y1="200" x2="310" y2="200"/>
-      <line x1="0" y1="300" x2="310" y2="300"/>
-      <line x1="0" y1="400" x2="310" y2="400"/>
-      <line x1="0" y1="500" x2="310" y2="500"/>
-      <line x1="50"  y1="0" x2="50"  y2="600"/>
-      <line x1="150" y1="0" x2="150" y2="600"/>
-      <line x1="250" y1="0" x2="250" y2="600"/>
-    </g>
-
-    <!-- Bottom gold accent line -->
-    <rect x="0" y="596" width="800" height="4" fill="url(#gold-grad)" opacity="0.5"/>
-  </svg>
-
-  <div class="hero-grain"></div>
-  <div class="hero-mask"></div>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hey-line"></div>
-      <span class="hey-txt">Nova Caruaru · Pernambuco · Posição de Entrada</span>
-    </div>
-    <h1 class="hero-title">
-      <strong>Vivacaé</strong>
-      <em>Caruaru</em>
-    </h1>
-    <p class="hero-lead">
-      236 unidades. Três tipologias.<br>
-      Uma praça em ascensão irreversível.
-    </p>
-    <div class="hero-kpis">
-      <div class="hero-kpi">
-        <div class="hero-kpi-num">R$170MM</div>
-        <div class="hero-kpi-lbl">VGV Bruto</div>
-      </div>
-      <div class="hero-kpi">
-        <div class="hero-kpi-num">22,5%</div>
-        <div class="hero-kpi-lbl">Margem Total M1</div>
-      </div>
-      <div class="hero-kpi">
-        <div class="hero-kpi-num">~R$600K</div>
-        <div class="hero-kpi-lbl">Exposição Máx.</div>
-      </div>
-      <div class="hero-kpi">
-        <div class="hero-kpi-num">~52×</div>
-        <div class="hero-kpi-lbl">MOIC Real</div>
-      </div>
-    </div>
-    <div class="hero-btns">
-      <a href="#retorno" class="btn-p">Ver retorno financeiro →</a>
-      <a href="#tese" class="btn-s">Entender a oportunidade</a>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="hero-scroll-bar"></div>
-    <span class="hero-scroll-txt">Scroll</span>
-  </div>
-</section>
-
-<!-- ══════ A — TESE ══════ -->
-<section class="sa" id="tese">
-  <div class="inner">
-    <div class="sa-grid">
-      <div class="rev">
-        <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-txt">A tese</span></div>
-        <h2 class="s-title">O interior<br><em>chegou.</em></h2>
-        <p class="s-body" style="margin-top:16px;">
-          Caruaru é a quarta maior economia do interior de Pernambuco. PIB de R$ 10 bilhões. 
-          Polo de moda, saúde e serviços com crescimento contínuo de renda qualificada. 
-          A demanda por produto residencial de médio e alto padrão existe e não tem oferta adequada. 
-          O Vivacaé chega para ocupar esse espaço com estrutura, inteligência e timing.
-        </p>
-        <div class="sa-quote">
-          "A questão não é se o projeto será estruturado.<br>
-          É quem ocupará a posição inicial desta estrutura."
-        </div>
-      </div>
-      <div class="sa-cards rev d2">
-        <div class="sa-card">
-          <div class="sa-card-lbl">4º PIB interior PE</div>
-          <div class="sa-card-num">R$ 10B</div>
-          <div class="sa-card-desc">Economia diversificada com base sólida em moda, saúde, agronegócio e serviços especializados.</div>
-        </div>
-        <div class="sa-card">
-          <div class="sa-card-lbl">Teto validado em campo</div>
-          <div class="sa-card-num">R$ 999K</div>
-          <div class="sa-card-desc">R$ 8.900/m² absorvível pelo mercado local. Nossa Tipologia C: R$ 8.869/m² — dentro do limite.</div>
-        </div>
-        <div class="sa-card">
-          <div class="sa-card-lbl">Custo do terreno</div>
-          <div class="sa-card-num">R$ 0</div>
-          <div class="sa-card-desc">Permuta de 10% do VGV. R$ 17,03 MM ao terrenista — sem desembolso de caixa pelo incorporador.</div>
-        </div>
-        <div class="sa-card">
-          <div class="sa-card-lbl">Área edificável</div>
-          <div class="sa-card-num">14.500m²</div>
-          <div class="sa-card-desc">APP 3.500 m² vira parque linear — ativo paisagístico único na praça, não passivo regulatório.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ B — LOCALIZAÇÃO ══════ -->
-<section class="sb" id="localizacao">
-  <div class="inner">
-    <div class="rev">
-      <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-txt">Localização</span></div>
-      <h2 class="s-title">Nova Caruaru.<br><em>O endereço que faltava.</em></h2>
-    </div>
-    <div class="sb-grid">
-      <div class="sb-img rev d1">
-        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=75" alt="Desenvolvimento urbano" loading="lazy"/>
-        <div class="sb-badge">
-          <div class="sb-badge-lbl">Área edificável</div>
-          <div class="sb-badge-val">14.500 m²</div>
-        </div>
-      </div>
-      <div class="sb-facts rev d2">
-        <div class="sb-fact"><div class="sb-fact-ico">📍</div><div><div class="sb-fact-title">Vizinhança que ancora o produto</div><div class="sb-fact-desc">Empreendimento premium consolidado do outro lado da AV-01 valida o posicionamento e o perfil de comprador da região.</div></div></div>
-        <div class="sb-fact"><div class="sb-fact-ico">🛣️</div><div><div class="sb-fact-title">Frente de 71,81m na AV-01</div><div class="sb-fact-desc">Acesso principal consolidado. Caruaru a 130km de Recife com infraestrutura viária e serviços urbanos completos.</div></div></div>
-        <div class="sb-fact"><div class="sb-fact-ico">🌿</div><div><div class="sb-fact-title">APP 3.500 m² — diferencial único</div><div class="sb-fact-desc">A área de preservação vira parque linear integrado ao lazer. Atributo que nenhum outro terreno na região possui.</div></div></div>
-        <div class="sb-fact"><div class="sb-fact-ico">🏗️</div><div><div class="sb-fact-title">ZAC-3 · CA 2,0 · 8 pavimentos</div><div class="sb-fact-desc">Gabarito confirmado sem outorga. Zona de Adensamento Construtivo com coeficiente de aproveitamento 2,0.</div></div></div>
-        <div class="sb-fact"><div class="sb-fact-ico">📊</div><div><div class="sb-fact-title">Demanda validada em campo</div><div class="sb-fact-desc">MCMV F4: 15–20 un./mês. Livre compacto: 8–12 un./mês. Premium: 3–5 un./mês. Prazo total: 16–22 meses.</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ C — TIPOLOGIAS ══════ -->
-<section class="sc" id="produto">
-  <div class="inner">
-    <div class="rev">
-      <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-txt">O produto</span></div>
-      <h2 class="s-title">Três tipologias.<br><em>Uma lógica precisa.</em></h2>
-      <p class="sc-sub">Cada bloco com hall independente, financiamento próprio e perfil de comprador distinto. O mix maximiza velocidade, VGV e margem simultaneamente.</p>
-    </div>
-    <div class="sc-grid">
-      <div class="tc rev d1">
-        <div class="tc-img"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=75" alt="Bloco A" loading="lazy"/><span class="tc-tag tc-tag-a">Bloco A · MCMV F4</span></div>
-        <div class="tc-body">
-          <div class="tc-name">Bloco A</div>
-          <div class="tc-sub">2 Suítes + Lavabo · 8 Pavimentos · 96 Unidades</div>
-          <div class="tc-specs">
-            <div class="tc-spec"><span class="tc-spec-l">Área privativa</span><span class="tc-spec-r">65 m²</span></div>
-            <div class="tc-spec"><span class="tc-spec-l">Custo de obra</span><span class="tc-spec-r">R$ 2.521/m²</span></div>
-            <div class="tc-spec"><span class="tc-spec-l">Financiamento</span><span class="tc-spec-r">CEF Faixa 4</span></div>
-            <div class="tc-spec"><span class="tc-spec-l">Velocidade</span><span class="tc-spec-r">15–20 un./mês</span></div>
-            <div class="tc-spec"><span class="tc-spec-l">Margem bruta</span><span class="tc-spec-r green">45,4% ↑</span></div>
-          </div>
-          <div class="tc-price" style="color:var(--gold);">R$ 549K – R$ 592K</div>
-          <div class="tc-price-range">Teto MCMV F4 R$ 600K ✓ · VGV bloco R$ 61,85 MM</div>
-        </div>
-      </div>
-      <div class="tc rev d2">
-        <div class="tc-img"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&q=75" alt="Bloco B" loading="lazy"/><span class="tc-tag tc-tag-b">Bloco B · Livre Compacto</span></div>
-        <div class="tc-body">
-          <div class="tc-name">Bloco B</div>
-          <div class="tc-sub">3 Quartos / 1 Suíte + Lavabo · 8 Pavimentos · 72 Unidades</div>
-          <div class="tc-specs">
-            <div class="tc-spec"><span class="tc-spec-l">Área privativa</span><span class="tc-spec-r">82 m²</span></div>
-            <div class="tc-spec"><span class="tc-spec-l">Custo de obra</span><span class="tc-spec-r">R$ 2.900/m²</span></div>
-            <div class="tc-spec"><span class="tc-spec-l">Renda alvo</span><span class="tc-spec-r">R$ 13K+</span></div>
-            <div class="tc-spec"><span class="tc-spec-l">Velocidade</span><span class="tc-spec-r">8–12 un./mês</span></div>
-            <div class="tc-spec"><span class="tc-spec-l">Concorrência</span><span class="tc-spec-r blue">Zero em Caruaru</span></div>
-          </div>
-          <div class="tc-price" style="color:var(--blue);">R$ 699K – R$ 742K</div>
-          <div class="tc-price-range">Gap real de mercado · VGV bloco R$ 46,44 MM</div>
-        </div>
-      </div>
-      <div class="tc rev d3">
-        <div class="tc-img"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=75" alt="Bloco C" loading="lazy"/><span class="tc-tag tc-tag-c">Bloco C · Livre Premium</span></div>
-        <div class="tc-body">
-          <div class="tc-name">Bloco C</div>
-          <div class="tc-sub">3 Suítes + Home Office + Lavabo · 7 Pavimentos · 68 Unidades</div>
-          <div class="tc-specs">
-            <div class="tc-spec"><span class="tc-spec-l">Área privativa</span><span class="tc-spec-r">107 m²</span></div>
-            <div class="tc-spec"><span class="tc-spec-l">Custo de obra</span><span class="tc-spec-r">R$ 3.200/m²</span></div>
-            <div class="tc-spec"><span class="tc-spec-l">Preço máx./m²</span><span class="tc-spec-r gold">R$ 8.869/m²</span></div>
-            <div class="tc-spec"><span class="tc-spec-l">Velocidade</span><span class="tc-spec-r">3–5 un./mês</span></div>
-            <div class="tc-spec"><span class="tc-spec-l">Térreo</span><span class="tc-spec-r green">Comercial/Wellness</span></div>
-          </div>
-          <div class="tc-price" style="color:var(--green);">R$ 899K – R$ 949K</div>
-          <div class="tc-price-range">Teto psicológico R$ 999K · VGV bloco R$ 59,13 MM</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ D — LIFESTYLE ══════ -->
-<section class="sd" id="lazer">
-  <div class="inner">
-    <div class="sd-hdr">
-      <div class="sd-img rev"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=75" alt="Área de lazer" loading="lazy"/></div>
-      <div class="rev d2">
-        <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-txt">Lifestyle</span></div>
-        <h2 class="s-title">Um condomínio.<br><em>Três experiências.</em></h2>
-        <p class="sd-body">Lazer compartilhado de alto padrão que ancora o ticket premium e acelera as vendas do bloco C. Parcerias com Technogym, Care Club NE e Awaken Operated By.</p>
-        <p class="sd-body" style="margin-top:10px;">Parque linear de 3.500 m² sobre a APP — diferencial competitivo único no mercado de Caruaru.</p>
-      </div>
-    </div>
-    <div class="am-grid rev">
-      <div class="am"><div class="am-ico">🏊</div><div class="am-name">Piscina Adulto + Kids + Deck</div></div>
-      <div class="am"><div class="am-ico">🎾</div><div class="am-name">Beach Tennis 2 Quadras</div></div>
-      <div class="am"><div class="am-ico">💪</div><div class="am-name">Fitness Technogym Powered By</div></div>
-      <div class="am"><div class="am-ico">🧘</div><div class="am-name">Wellness · Care Club NE</div></div>
-      <div class="am"><div class="am-ico">🍽️</div><div class="am-name">Espaço Gourmet + Churrasqueira</div></div>
-      <div class="am"><div class="am-ico">💼</div><div class="am-name">Coworking · Lounge</div></div>
-      <div class="am"><div class="am-ico">🌿</div><div class="am-name">Parque Linear APP 3.500 m²</div></div>
-      <div class="am"><div class="am-ico">🛡️</div><div class="am-name">Portaria Virtual · CFTV 24h</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ E — RETORNO ══════ -->
-<section class="se" id="retorno">
-  <div class="inner">
-    <div class="rev">
-      <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-txt">A matemática</span></div>
-      <h2 class="s-title">Retorno que<br><em>fala por si.</em></h2>
-      <p class="se-sub">Estrutura financeira auditada com metodologia de financiamento circular padrão de mercado — 16% sobre TDC. Premissas de campo, não de modelo.</p>
-    </div>
-    <div class="fin-grid rev d1">
-      <div class="fc hi"><div class="fc-lbl">VGV Bruto Total</div><div class="fc-num gold">R$ 170,28 MM</div><div class="fc-sub">236 unidades · ticket médio R$ 722K<br>Permuta 10% = R$ 17,03 MM</div></div>
-      <div class="fc"><div class="fc-lbl">VGV Líquido (90%)</div><div class="fc-num">R$ 153,25 MM</div><div class="fc-sub">Base do resultado<br>TDC M1: R$ 126,14 MM</div></div>
-      <div class="fc"><div class="fc-lbl">Lucro Total · M1</div><div class="fc-num green">R$ 34,54 MM</div><div class="fc-sub">Lucro líq. R$ 27,11 MM<br>+ Txs Incorporador R$ 7,43 MM</div></div>
-      <div class="fc"><div class="fc-lbl">Margem Líquida</div><div class="fc-num">17,7%</div><div class="fc-sub">Sobre VGV líquido<br>R$ 153,25 MM</div></div>
-      <div class="fc hi"><div class="fc-lbl">Margem Total · M1</div><div class="fc-num gold">22,5%</div><div class="fc-sub">Incorporador-construtor<br>Dentro de range de mercado ✓</div></div>
-      <div class="fc"><div class="fc-lbl">TIR Equity</div><div class="fc-num green">28–32%</div><div class="fc-sub">a.a. · sem giro cruzado<br>Com giro cruzado: >200% a.a.</div></div>
-    </div>
-    <div class="fin-bench rev d2">
-      <div class="fin-bench-head"><div class="fin-bench-htxt">Desempenho Financeiro · Vivacaé · Modelo Verificado</div></div>
-      <div class="fin-bench-row"><span class="fin-bench-n">VGV Líquido</span><div style="display:flex;align-items:center;gap:6px;"><span class="fin-bench-v">R$ 153,25 MM</span><span class="fin-bench-ref">3 blocos · MCMV + Livre</span></div></div>
-      <div class="fin-bench-row"><span class="fin-bench-n">Lucro Total Projeto M1</span><div style="display:flex;align-items:center;gap:6px;"><span class="fin-bench-v">R$ 34,54 MM</span><span class="fin-bench-ref">incorporador-construtor</span></div></div>
-      <div class="fin-bench-row"><span class="fin-bench-n">Custo Financeiro / TDC</span><div style="display:flex;align-items:center;gap:6px;"><span class="fin-bench-v">R$ 20,18 MM · 16%</span><span class="fin-bench-ref">circular verificado ✓</span></div></div>
-      <div class="fin-bench-row"><span class="fin-bench-n">Soft Costs</span><div style="display:flex;align-items:center;gap:6px;"><span class="fin-bench-v">R$ 3,15 MM</span><span class="fin-bench-ref">3,82% s/ obra</span></div></div>
-      <div class="fin-bench-row"><span class="fin-bench-n">Exposição Máxima de Caixa</span><div style="display:flex;align-items:center;gap:6px;"><span class="fin-bench-v">~R$ −600K</span><span class="fin-bench-ref">permuta colateral + CRI + pré-vendas</span></div></div>
-      <div class="fin-bench-row"><span class="fin-bench-n">MOIC Real (com giro cruzado)</span><div style="display:flex;align-items:center;gap:6px;"><span class="fin-bench-v">~52×</span><span class="fin-bench-ref">R$34,54MM sobre ~R$600K</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ F — CAPITAL ══════ -->
-<section class="sf" id="capital">
-  <div class="inner">
-    <div class="rev">
-      <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-txt">Estrutura de capital</span></div>
-      <h2 class="s-title">Quatro modelos.<br><em>Uma decisão.</em></h2>
-    </div>
-    <div class="sf-grid">
-      <div class="sf-models rev d1">
-        <div class="mc best"><div class="mc-eye mc-eye-g">M1 · Melhor · Recomendado</div><div class="mc-name">Incorporador-Construtor · Mesmo player</div><div class="mc-row"><span class="mc-rl">TDC</span><span class="mc-rv">R$ 126,14 MM</span></div><div class="mc-row"><span class="mc-rl">Lucro líquido</span><span class="mc-rv">R$ 27,11 MM</span></div><div class="mc-row"><span class="mc-rl">+ Txs Incorporador (9%)</span><span class="mc-rv">R$ 7,43 MM</span></div><div class="mc-row"><span class="mc-rl">Lucro total</span><span class="mc-rv g">R$ 34,54 MM</span></div><div class="mc-row"><span class="mc-rl">Margem total</span><span class="mc-rv g">22,5% ✓</span></div></div>
-        <div class="mc"><div class="mc-eye mc-eye-w">M2 · Parceria · 5% garantido</div><div class="mc-name">Players distintos · Construtora 5% fixo s/ obra</div><div class="mc-row"><span class="mc-rl">Lucro incorporador</span><span class="mc-rv">R$ 27,11 MM</span></div><div class="mc-row"><span class="mc-rl">Txs construtora</span><span class="mc-rv">R$ 4,13 MM</span></div><div class="mc-row"><span class="mc-rl">Margem total</span><span class="mc-rv">20,4%</span></div></div>
-        <div class="mc"><div class="mc-eye mc-eye-w">M3 · Parceria · 5% + 2% meta</div><div class="mc-name">Meta binária: prazo 36m + custo ≤ R$ 82,55 MM</div><div class="mc-row"><span class="mc-rl">Lucro incorporador</span><span class="mc-rv">R$ 26,57 MM</span></div><div class="mc-row"><span class="mc-rl">Txs construtora (5%+2%)</span><span class="mc-rv">R$ 4,64 MM</span></div><div class="mc-row"><span class="mc-rl">Margem total</span><span class="mc-rv">20,4%</span></div></div>
-        <div class="mc bad"><div class="mc-eye mc-eye-r">M4 · Pior cenário · Não recomendado</div><div class="mc-name">Incorporador puro · Construtora terceira 9%</div><div class="mc-row"><span class="mc-rl">TDC (tx.adm dentro)</span><span class="mc-rv">R$ 133,57 MM</span></div><div class="mc-row"><span class="mc-rl">Lucro total</span><span class="mc-rv r">R$ 19,68 MM</span></div><div class="mc-row"><span class="mc-rl">Margem total</span><span class="mc-rv r">12,8%</span></div></div>
-      </div>
-      <div class="sf-right rev d2">
-        <div class="exp-box">
-          <div class="exp-box-title">Exposição de Caixa · Vivacaé</div>
-          <div class="exp-duo">
-            <div class="exp-c exp-c-b"><div class="exp-c-lbl exp-c-lbl-b">Sem estrutura</div><div class="exp-c-num exp-c-num-b">R$ 45–55MM</div><div class="exp-c-sub">Equity puro total<br>Sem alavancagem</div></div>
-            <div class="exp-c exp-c-g"><div class="exp-c-lbl exp-c-lbl-g">Com estrutura</div><div class="exp-c-num exp-c-num-g">~R$ 600K</div><div class="exp-c-sub">Permuta colateral<br>+ CRI + pré-vendas</div></div>
-          </div>
-          <div style="font-size:clamp(8px,1.1vw,9.5px);letter-spacing:.12em;text-transform:uppercase;color:var(--cr4);margin-bottom:9px;">Escada de redução</div>
-          <div class="ladder">
-            <div class="rung"><div class="rung-dot" style="background:#e07070;"></div><span class="rung-l">Equity puro · sem financiamento</span><span class="rung-v">R$ 45–55MM</span></div>
-            <div class="rung"><div class="rung-dot" style="background:var(--gold3);"></div><span class="rung-l">Linha bancária padrão (10% equity)</span><span class="rung-v">~R$ 13MM</span></div>
-            <div class="rung"><div class="rung-dot" style="background:var(--blue);"></div><span class="rung-l">+ Permuta R$ 16,18MM como colateral</span><span class="rung-v">~R$ 4–5MM</span></div>
-            <div class="rung"><div class="rung-dot" style="background:var(--green);"></div><span class="rung-l">+ CRI + pré-vendas MCMV</span><span class="rung-v g">~R$ 600K ✓</span></div>
-          </div>
-        </div>
-        <div class="moic-box">
-          <div class="moic-lbl">MOIC Real · Com giro cruzado</div>
-          <div class="moic-num">~52×</div>
-          <div class="moic-sub">R$ 34,54 MM de lucro sobre ~R$ 600K de exposição<br>TIR real >200% a.a. · 48 meses</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ G — MERCADO ══════ -->
-<section class="sg" id="mercado">
-  <div class="inner">
-    <div class="rev">
-      <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-txt">A praça</span></div>
-      <h2 class="s-title">Por que Caruaru<br><em>agora.</em></h2>
-    </div>
-    <div class="sg-grid">
-      <div class="mgc rev d1"><div class="mgc-ico">📈</div><div class="mgc-title">PIB e Renda em Ascensão</div><div class="mgc-body">Quarta maior economia do interior pernambucano. Polo de moda com exportação nacional. Crescimento contínuo de serviços e saúde especializada.<span class="mgc-hl">R$ 10 bilhões PIB</span></div></div>
-      <div class="mgc rev d2"><div class="mgc-ico">🏘️</div><div class="mgc-title">Gap de Mercado Real</div><div class="mgc-body">O Bloco B (R$ 699–742K) preenche uma lacuna existente. Comprador com renda acima de R$ 13K sem produto adequado em Caruaru.<span class="mgc-hl">Zero concorrentes diretos</span></div></div>
-      <div class="mgc rev d3"><div class="mgc-ico">🏦</div><div class="mgc-title">MCMV F4 como Âncora</div><div class="mgc-body">96 unidades com financiamento CEF. Pré-venda de 30% ativa a linha de produção. 15–20 un./mês geram caixa e validam B e C.<span class="mgc-hl">Teto F4 R$ 600K · Nosso máx. R$ 592K ✓</span></div></div>
-      <div class="mgc rev d1"><div class="mgc-ico">📐</div><div class="mgc-title">Escalonamento por Pavimento</div><div class="mgc-body">Mecânica validada localmente. Andares baixos criam urgência de vendas — PR orgânico que acelera o lançamento naturalmente.<span class="mgc-hl">16–22 meses prazo de vendas</span></div></div>
-      <div class="mgc rev d2"><div class="mgc-ico">🌇</div><div class="mgc-title">Vizinhança Premium Validada</div><div class="mgc-body">Empreendimento de alto padrão do outro lado da AV-01 ancora o posicionamento e valida a disposição a pagar do mercado local.<span class="mgc-hl">Mesma avenida · público validado</span></div></div>
-      <div class="mgc rev d3"><div class="mgc-ico">⏱️</div><div class="mgc-title">Janela Primeira de Mercado</div><div class="mgc-body">Oferta qualificada escassa. O primeiro a estruturar este padrão define o preço de referência da praça pelos próximos 5 anos.<span class="mgc-hl">First mover advantage real</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ H — TIME ══════ -->
-<section class="sh" id="time">
-  <div class="inner">
-    <div class="rev">
-      <div class="s-eye"><div class="s-eye-bar"></div><span class="s-eye-txt">Estruturação</span></div>
-      <h2 class="s-title">Quem está<br><em>construindo.</em></h2>
-    </div>
-    <div class="sh-grid">
-      <div class="team-c rev d1"><div class="team-av">AC</div><div class="team-name">Ari Carvalho</div><div class="team-role">CEO & Founder · LHL-Tech</div><div class="team-bio">35 anos em construção civil, real estate e PropTech nos EUA, Brasil e Angola. Florida Realtor CRECI-FL SL3467205. Especialista em estruturação de deals binacionais e inteligência de mercado imobiliário.</div></div>
-      <div class="team-c rev d2"><div class="team-av">PV</div><div class="team-name">Paulo Veloso Arquitetura</div><div class="team-role">Projeto Arquitetônico · Parceiro</div><div class="team-bio">Escritório parceiro responsável pelo projeto arquitetônico e coordenação criativa do Vivacaé em parceria com Molegolar. Expertise em produto residencial de médio e alto padrão no Nordeste.</div></div>
-      <div class="team-c rev d3"><div class="team-av">RS</div><div class="team-name">Rodrigo Sampaio Diniz</div><div class="team-role">Parceiro Terrenista · Caruaru</div><div class="team-bio">Proprietário do terreno de 18.000 m² em Nova Caruaru. Parceiro estratégico na viabilização da permuta de 10% do VGV — R$ 17,03 MM — zerando o custo de aquisição do ativo.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ I — CTA ══════ -->
-<section class="si" id="contato">
-  <div class="si-inner">
-    <div class="si-pre rev">A questão não é se.</div>
-    <h2 class="si-title rev d1">É quem ocupará<br><em>a posição inicial.</em></h2>
-    <p class="si-body rev d2">O Vivacaé Caruaru está em estruturação ativa. Posição única, capacidade limitada de parceiros estratégicos. Incorporadores, construtores e fundos com interesse devem iniciar a conversa agora.</p>
-    <div class="si-btns rev d3">
-      <a href="mailto:ari@lhlintelligence.com" class="btn-p">Iniciar conversa →</a>
-      <a href="#retorno" class="btn-s">Revisitar os números</a>
-    </div>
-    <div class="si-disc rev d4">
-      Material informativo · Não constitui oferta pública de valores mobiliários.<br>
-      Projeções baseadas em premissas de mercado e pesquisa de campo — sujeitas a confirmação técnica e legal.<br>
-      LHL-Tech Intelligence · Ari Carvalho · CRECI-FL SL3467205 · "Smart Money. Structured Deals. Faith-Driven Mission."
-    </div>
-  </div>
-</section>
-
-<!-- ══════ FOOTER ══════ -->
-<footer>
+<!-- HEADER -->
+<div class="hdr">
   <div>
-    <div class="ft-brand">Vivacaé <em>Caruaru</em></div>
-    <div class="ft-creci">LHL-Tech Intelligence · CRECI-FL SL3467205</div>
+    <div class="hdr-eye">LHL-Tech Intelligence · Uso Interno · Confidencial · Abril 2026</div>
+    <div class="hdr-title">Quadro Comparativo</div>
+    <div class="hdr-sub">Giro de Estoque + Financiamento de Obra &nbsp;·&nbsp; Metodologia circular 16% TDC &nbsp;·&nbsp; 4 modelos de estruturação</div>
   </div>
-  <div class="ft-meta">Nova Caruaru · Pernambuco · Brasil<br>"Smart Money. Structured Deals. Faith-Driven Mission."</div>
-</footer>
+  <div class="badge">Benchmark Verificado</div>
+</div>
 
-<script>
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
-document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+<!-- COL HEADERS -->
+<div class="g3 col-hdrs">
+  <div class="ch ch-lbl"><span>Item</span></div>
+  <div class="ch ch-ref">
+    <div class="ch-eye ch-eye-b">Referência de Mercado · Recife / PE</div>
+    <div class="ch-name ch-name-b">Referência</div>
+    <div class="ch-meta">Torre única · Alto padrão · Permuta ~20%<br>Incorporador-construtor · Giro cruzado ativo</div>
+  </div>
+  <div class="ch ch-viv">
+    <div class="ch-eye ch-eye-g">Vivacaé Caruaru · Modelo M1 · LHL-Tech</div>
+    <div class="ch-name ch-name-g">Vivacaé M1</div>
+    <div class="ch-meta">3 blocos · 236 un. · MCMV F4 + Livre · Permuta 10%<br>Incorporador-construtor · Nova Caruaru / PE</div>
+  </div>
+</div>
 
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').style.borderBottomColor =
-    window.scrollY > 40 ? 'rgba(201,168,76,0.35)' : 'rgba(201,168,76,0.22)';
-}, { passive: true });
-</script>
+<!-- DESPESA TOTAL -->
+<div class="g3 desp">
+  <div class="dc"><div class="desp-lbl">Despesa Total (TDC)</div></div>
+  <div class="dc"><div class="desp-num desp-num-b">R$ 55.361.721</div></div>
+  <div class="dc"><div class="desp-num desp-num-g">R$ 126.140.000</div></div>
+</div>
+
+<!-- SEÇÃO DESPESAS -->
+<div class="g3 sec"><div class="dc">Despesas</div></div>
+
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Despesas com obra (custo raso + tx.adm)</div></div>
+  <div class="dc"><div class="val b">R$ 34.313.615</div><div class="pct">– 62,3%</div></div>
+  <div class="dc"><div class="val g">R$ 82.550.000</div><div class="pct">– 65,4%</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- Fin. Obra: Juros + Estruturação</div></div>
+  <div class="dc"><div class="val b">R$ 8.873.146</div><div class="pct">– 16,0%</div></div>
+  <div class="dc"><div class="val g">R$ 20.180.000</div><div class="pct">– 16,0%</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Despesas Comerciais (desp.comerciais + txs.gestão)</div></div>
+  <div class="dc"><div class="val">R$ 5.964.860</div><div class="pct">– 10,8%</div></div>
+  <div class="dc"><div class="val">R$ 10.730.000</div><div class="pct">– 8,5%</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- Imposto</div></div>
+  <div class="dc"><div class="val">R$ 2.592.025</div><div class="pct">– 4,7%</div></div>
+  <div class="dc"><div class="val">R$ 6.440.000</div><div class="pct">– 5,1%</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Despesas de Incorporação</div></div>
+  <div class="dc"><div class="val">R$ 515.884</div><div class="pct">– 0,9%</div></div>
+  <div class="dc"><div class="val">R$ 3.150.000</div><div class="pct">– 2,5%</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- Despesas com Terreno</div></div>
+  <div class="dc"><div class="val">R$ 201.820</div><div class="pct">– 0,4%</div></div>
+  <div class="dc"><div class="val">R$ 200.000</div><div class="pct">– 0,2%</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Giro Estoque: Juros + Estruturação</div></div>
+  <div class="dc"><div class="val">– R$ 547.850</div><div class="pct">– 0,98%</div></div>
+  <div class="dc"><div class="val">R$ 1.150.000</div><div class="pct">– 0,75%</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- Contingência Técnica</div></div>
+  <div class="dc"><div class="val dim">—</div></div>
+  <div class="dc"><div class="val">R$ 1.240.000</div><div class="pct">– 1,0%</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Comissão Intermediação Terreno</div></div>
+  <div class="dc"><div class="val dim">—</div></div>
+  <div class="dc"><div class="val">R$ 500.000</div><div class="pct">– 0,4%</div></div>
+</div>
+
+<!-- SEÇÃO RESULTADO -->
+<div class="g3 sec"><div class="dc">Resultado</div></div>
+
+<div class="g3 row">
+  <div class="dc"><div class="iname">- VGV Líquido (90%)</div></div>
+  <div class="dc"><div class="val-big b">~R$ 65.000.000</div></div>
+  <div class="dc"><div class="val-big g">R$ 153.250.000</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- Lucro Líquido</div></div>
+  <div class="dc"><div class="val-big b">R$ 12.230.337</div></div>
+  <div class="dc"><div class="val-big g">R$ 27.110.000</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Txs Incorporador (tx. adm)</div></div>
+  <div class="dc"><div class="val b">R$ 3.404.292</div></div>
+  <div class="dc"><div class="val g">R$ 7.430.000</div></div>
+</div>
+<div class="g3 row result">
+  <div class="dc"><div class="iname bold">- Lucro Líquido + Txs Incorporador</div></div>
+  <div class="dc">
+    <div class="val-big b">R$ 15.634.629</div>
+    <div class="pct">R$12.230.337 + R$3.404.292</div>
+  </div>
+  <div class="dc">
+    <div class="val-big g">R$ 34.540.000</div>
+    <div class="pct">R$27.110.000 + R$7.430.000</div>
+  </div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- Margem Líquida</div></div>
+  <div class="dc"><div class="margem b">18,75% / 23,9%</div></div>
+  <div class="dc"><div class="margem g">17,7% / 22,5%</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- Máxima e atual exposição caixa incorporador</div></div>
+  <div class="dc"><div class="val b">R$ −444.209</div><div class="pct">/ R$ 14.642 (março)</div></div>
+  <div class="dc"><div class="val g">~R$ −600.000</div><div class="pct">/ ~R$ 0 (pós-lançamento MCMV)</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- MOIC Real (com giro cruzado)</div></div>
+  <div class="dc"><div class="moic b">35×+</div></div>
+  <div class="dc"><div class="moic g">~52× ↑</div></div>
+</div>
+<div class="g3 row alt">
+  <div class="dc"><div class="iname">- TIR Real (com giro cruzado)</div></div>
+  <div class="dc"><div class="val b">&gt;150% a.a.</div></div>
+  <div class="dc"><div class="val gold">&gt;200% a.a. ↑</div></div>
+</div>
+<div class="g3 row">
+  <div class="dc"><div class="iname">- TIR Equity (sem giro cruzado)</div></div>
+  <div class="dc"><div class="val dim">N/D</div></div>
+  <div class="dc"><div class="val g">28–32% a.a.</div></div>
+</div>
+
+<!-- 4 MODELOS -->
+<div class="g3 sec"><div class="dc">4 Modelos de Estruturação · Base TDC Idêntica · Vivacaé Caruaru</div></div>
+<div class="m4">
+  <div class="mc best">
+    <div class="mc-eye mc-eye-g">M1 · Melhor · Recomendado</div>
+    <div class="mc-name">Incorporador-Construtor<br>Mesmo player</div>
+    <div class="mr"><span class="mr-l">TDC</span><span class="mr-v">R$ 126,14 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro líq.</span><span class="mr-v">R$ 27,11 MM</span></div>
+    <div class="mr"><span class="mr-l">+ Txs Incorp.</span><span class="mr-v">R$ 7,43 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro total</span><span class="mr-v g">R$ 34,54 MM</span></div>
+    <div class="mr"><span class="mr-l">Margem total</span><span class="mr-v g">22,5% ✓</span></div>
+  </div>
+  <div class="mc">
+    <div class="mc-eye mc-eye-w">M2 · Parceria</div>
+    <div class="mc-name">Players distintos<br>5% garantido s/ obra</div>
+    <div class="mr"><span class="mr-l">TDC</span><span class="mr-v">R$ 126,14 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro incorp.</span><span class="mr-v">R$ 27,11 MM</span></div>
+    <div class="mr"><span class="mr-l">Txs construtora</span><span class="mr-v">R$ 4,13 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro total</span><span class="mr-v">R$ 31,24 MM</span></div>
+    <div class="mr"><span class="mr-l">Margem total</span><span class="mr-v">20,4%</span></div>
+  </div>
+  <div class="mc">
+    <div class="mc-eye mc-eye-w">M3 · Parceria + Meta</div>
+    <div class="mc-name">5% fixo + 2% meta<br>Prazo 36m + custo ≤ R$82,55MM</div>
+    <div class="mr"><span class="mr-l">TDC</span><span class="mr-v">R$ 126,14 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro incorp.</span><span class="mr-v">R$ 26,57 MM</span></div>
+    <div class="mr"><span class="mr-l">Txs construtora</span><span class="mr-v">R$ 4,64 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro total</span><span class="mr-v">R$ 31,21 MM</span></div>
+    <div class="mr"><span class="mr-l">Margem total</span><span class="mr-v">20,4%</span></div>
+  </div>
+  <div class="mc bad">
+    <div class="mc-eye mc-eye-r">M4 · Pior · Não recomendado</div>
+    <div class="mc-name">Incorporador puro<br>Construtora terceira 9%</div>
+    <div class="mr"><span class="mr-l">TDC (c/ tx.adm)</span><span class="mr-v">R$ 133,57 MM</span></div>
+    <div class="mr"><span class="mr-l">Lucro total</span><span class="mr-v r">R$ 19,68 MM</span></div>
+    <div class="mr"><span class="mr-l">Margem total</span><span class="mr-v r">12,8%</span></div>
+  </div>
+</div>
+
+<!-- V5 -->
+<div class="v5">
+  <div class="v5-ico">⚑</div>
+  <div>
+    <div class="v5-ttl">Opção V5 — Condicional · Sujeito a Confirmação</div>
+    <div class="v5-body">Segregação do Bloco A (MCMV F4 · 96 un.) em SPE própria com <strong>RET — alíquota 1%</strong> sobre receita MCMV. Economia: <strong>R$ 1,76 MM</strong> · TDC cai para ~R$ 124,38 MM · Lucro M1 sobe para <strong>~R$ 36,30 MM</strong> · Margem total: <strong>~23,7%</strong>. Condicionante: habilitação CEF + SPE segregada aprovada pela Receita Federal.</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="ftr">
+  <div>
+    <div class="fb">LHL-Tech <em>Intelligence</em></div>
+    <div class="fc">Ari Carvalho · CRECI-FL SL3467205 · "Smart Money. Structured Deals. Faith-Driven Mission."</div>
+  </div>
+  <div class="fm">Nova Caruaru · Pernambuco · Brasil<br>Circular verificado: R$20,18MM ÷ R$126,14MM = <strong style="color:#C9A84C;">16,0%</strong> ✓</div>
+</div>
+
+</div>
 </body>
 </html>
